@@ -7,15 +7,36 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - Mi aplicación ASP.NET</title>
+    <title><%: Page.Title %> - Solucion hospitalaria</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <webopt:BundleReference  runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
 
+    <style>
+        #navbarHome {
+            margin-top: -50px
+        }
+        #navbarHeader {
+            margin-bottom: 15px;
+            margin-top: -50px;
+        }
+        #personalDataSection {
+            margin-top: 35px;
+        }
+        #locationSection {
+            margin-top: 30px;
+        }
+        #questionSection {
+            margin-top: 30px;
+        }
+        #saveInfoDetailButton{
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <form runat="server">
@@ -39,34 +60,46 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="collapse bg-dark navbarHeader" id="navbarHeader">
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" runat="server" href="~/">Nombre de la aplicación</a>
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+                        <h4 class="text-white">Acerca de</h4>
+                        <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    </div>
+                    <div class="col-sm-4 offset-md-1 py-4">
+                        <h4 class="text-white">Contacto</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white">Correo electronico</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Inicio</a></li>
-                        <li><a runat="server" href="~/About">Acerca de</a></li>
-                        <li><a runat="server" href="~/Contact">Contacto</a></li>
-                    </ul>
-                </div>
+            </div>
+        </div>
+        <div class="navbar navbar-dark bg-dark shadow-sm" id="navbarHome">
+            <div class="container d-flex justify-content-between">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                     <img src="https://freesvg.org/img/1502946545.png" width="50" height="50" class="d-inline-block align-top" alt="Car vector logo">
+                    <strong>Solucion hospitalaria</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             </div>
         </div>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</p>
+            <footer class="text-muted">
+                <div class="container">
+                    <p class="float-right">
+                        <a runat="server" href="~/Home.aspx">Regresar al inicio</a>
+                    </p>
+                    <p>Proyecto solucion hospitalaria</p>
+                </div>
             </footer>
         </div>
-
     </form>
 </body>
 </html>
