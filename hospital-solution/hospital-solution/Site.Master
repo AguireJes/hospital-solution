@@ -36,6 +36,26 @@
         #saveInfoDetailButton{
             margin-top: 20px;
         }
+
+        .btn-dark:hover {
+            background-color:#37474f;
+        }
+
+        .btn:hover {
+            color: #757575;
+            text-decoration: none;
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+            margin-left: 60px;
+        }
+        .form-control{
+            margin-left: 60px;
+            margin-bottom: 25px;
+        }
+
     </style>
 </head>
 <body>
@@ -80,7 +100,7 @@
             <div class="container d-flex justify-content-between">
                 <a href="#" class="navbar-brand d-flex align-items-center">
                      <img src="https://freesvg.org/img/1502946545.png" width="50" height="50" class="d-inline-block align-top" alt="Car vector logo">
-                    <strong>Solucion hospitalaria</strong>
+                    <strong>Hospital Seguro de Panamá</strong>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -96,7 +116,7 @@
                     <p class="float-right">
                         <a runat="server" href="~/Home.aspx">Regresar al inicio</a>
                     </p>
-                    <p>Proyecto solucion hospitalaria</p>
+                    <p>Hospital Seguro de Panamá</p>
                 </div>
             </footer>
         </div>
