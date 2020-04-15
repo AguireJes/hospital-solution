@@ -1,4 +1,5 @@
-﻿using System;
+﻿using hospital_solution.Interfaces.Command.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,6 +10,8 @@ namespace hospital_solution
 {
     public partial class _Default : Page
     {
+        WsclientImpl wsclient = new WsclientImpl();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -16,8 +19,7 @@ namespace hospital_solution
 
         protected void signIn_Click(object sender, EventArgs e)
         {
-            //if (ConnectionSevice.SignIn(inputUser.Text, inputPassword.Text))
-            if(true)
+            if (wsclient.SignIn(inputUser.Text, inputPassword.Text))
             {
                 Response.Redirect("~/Dashboard.aspx");
             }
