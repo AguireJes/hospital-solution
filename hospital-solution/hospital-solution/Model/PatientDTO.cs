@@ -23,5 +23,6 @@ namespace hospital_solution.Model
         public List<char> travelCountry { get; set; }
         public char personContact { get; set; }
         public string personQuantity { get; set; }
+        public string idHouse { get; set; }
     }
 }
