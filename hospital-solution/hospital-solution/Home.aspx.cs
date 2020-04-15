@@ -16,7 +16,17 @@ namespace hospital_solution
 
         protected void signIn_Click(object sender, EventArgs e)
         {
-
+            //if (ConnectionSevice.SignIn(inputUser.Text, inputPassword.Text))
+            if(true)
+            {
+                Response.Redirect("~/Dashboard.aspx");
+            }
+            else
+            {
+                inputUser.Text = null;
+                inputPassword.Text = null;
+                Response.Write("<script>alert('Usuario o contrasena erronea, Favor verifique') </script>");
+            }
         }
     }
 }

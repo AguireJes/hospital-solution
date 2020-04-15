@@ -13,10 +13,10 @@
                         </div>
                         <div class="form-signin">
                             <div class="form-label-group">
-                                <asp:TextBox ID="inputUser" runat="server" type="text" class="form-control" placeholder="Usuario" required="true"> </asp:TextBox>
+                                <asp:TextBox ID="inputUser" runat="server" type="text" class="form-control input-sign" placeholder="Usuario" required="true"> </asp:TextBox>
                             </div>
                             <div class="form-label-group">
-                                <asp:TextBox ID="inputPassword" runat="server" type="password" class="form-control" placeholder="Contrasena" required="true"> </asp:TextBox>
+                                <asp:TextBox ID="inputPassword" runat="server" type="password" class="form-control input-sign" placeholder="Contrasena" required="true"> </asp:TextBox>
                             </div>
                             <hr class="my-4">
                             <asp:Button ID="signIn" runat="server" Text="Iniciar sesion" class="btn btn-lg btn-dark btn-block" type="submit" OnClick="signIn_Click" />
