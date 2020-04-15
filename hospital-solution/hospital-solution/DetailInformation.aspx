@@ -1,39 +1,37 @@
-﻿<%@ Page Title="Detalle - " Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master"  CodeBehind="DetailInformation.aspx.cs" Inherits="hospital_solution.DetailInformation" %>
+﻿<%@ Page Title="Detalle - " Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="DetailInformation.aspx.cs" Inherits="hospital_solution.DetailInformation" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
- <div class="container" id="personalDataSection">
+    <div class="container" id="personalDataSection">
         <h2>Datos personales</h2>
         <form>
             <div class="form-row">
                 <div class="form-group col-md-3">
-                    <label for="inputName">Nombre Completo</label>
-                    <input type="text" class="form-control" id="inputName" placeholder="Nombre completo" required>
+                    <label class="font-weight-bold">Nombre</label>
+                    <asp:TextBox ID="inputName" runat="server" type="text" class="form-control" placeholder="Nombre completo" required="true"> </asp:TextBox>
                 </div>
                 <div class="form-group col-md-3">
-                    <label>Documento</label>
-                    <div class="container">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="radioTypeDoc" id="radioTypeDocCed" value="CED">
-                            <label class="form-check-label" for="radioTypeCED">
-                                Cédula
-                            </label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="radioTypeDoc" id="radioTypeDocPas" value="PAS">
-                            <label class="form-check-label" for="radioTypePAS">
-                                Pasaporte
-                            </label>
-                        </div>
+                    <label class="font-weight-bold">Documento</label>
+                    <div class="form-check form-check-inline">
+                        <asp:DropDownList ID="documentType" runat="server" OnSelectedIndexChanged="documentType_SelectedIndexChanged" AutoPostBack="True">
+                            <asp:ListItem Text="Cedula" Value="C" />
+                            <asp:ListItem Text="Pasaporte" Value="P" />
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="documentTypeRequired" runat="server" ControlToValidate="documentType"
+                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
                     </div>
                 </div>
-                <div class="form-group col-md-3" id="divCed" style="display: none">
-                    <label for="inputCed">Cedula</label>
-                    <input type="text" class="form-control" id="inputCed" required>
-                </div>
-                <div class="form-group col-md-3" id="divPas" style="display: none">
-                    <label for="inputPas">Pasaporte</label>
-                    <input type="text" class="form-control" id="inputPas" required>
-                </div>
+                <asp:Panel ID="fieldId" runat="server" Visible="false">
+                    <div class="form-group col-md-3">
+                        <label class="font-weight-bold">Cedula</label>
+                        <asp:TextBox ID="inputId" runat="server" type="text" class="form-control input-id" placeholder="8-909-1919" required="true"> </asp:TextBox>
+                    </div>
+                </asp:Panel>
+                <asp:Panel ID="fieldPassport" runat="server" Visible="false">
+                    <div class="form-group col-md-3">
+                        <label class="font-weight-bold">Pasaporte</label>
+                        <asp:TextBox ID="inputPassport" runat="server" type="text" class="form-control input-id" placeholder="123456789" required="true"> </asp:TextBox>
+                    </div>
+                </asp:Panel>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-3">

@@ -9,7 +9,7 @@ namespace hospital_solution.Model
     {
         public string name { get; set; }
         public string image { get; set; }
-        public char documentType { get; set; }
+        public string documentType { get; set; }
         public string telephone { get; set; }
         public string bloodType { get; set; }
         public string email { get; set; }
