@@ -45,16 +45,17 @@
                     </div>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="inputPhone">Telefono</label>
-                    <input type="text" class="form-control" id="inputPhone" placeholder="Telefono" required>
+                      <label class="font-weight-bold">Telefono</label>
+                    <asp:TextBox ID="inputPhone" runat="server" type="text" class="form-control input-id" placeholder="255-2338" required="true"> </asp:TextBox>
                 </div>
                 <div class="form-group col-md-2">
-                    <label for="inputBloodType">Tipo de sangre</label>
-                    <select id="inputBloodType" class="form-control" required>
-                        <option selected disabled>Seleccionar</option>
-                        <option>O+</option>
-                        <option>AB</option>
-                    </select>
+                    <label class="font-weight-bold">Tipo de sangre</label>
+                    <div class="form-check form-check-inline">
+                        <asp:DropDownList ID="bloodType" runat="server">
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="bloodTypeRequired" runat="server" ControlToValidate="bloodType"
+                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
+                    </div>
                 </div>
             </div>
             <div class="form-row">

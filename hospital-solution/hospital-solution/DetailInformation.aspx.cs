@@ -18,7 +18,8 @@ namespace hospital_solution
         {
             if (!IsPostBack)
             {
-                BindDropDownList();
+                loadSexCatalog();
+                loadBloodCatalog();
             }
         }
 
@@ -43,10 +44,16 @@ namespace hospital_solution
             }
         }
 
-        private void BindDropDownList()
+        private void loadSexCatalog()
         {
             string query = "select * from hospital.sexo";
             wsClientImpl.loadDropDownList(dropDownList: sexType, query, "valor", "descripcion");
+        }
+
+        private void loadBloodCatalog()
+        {
+            string query = "select * from hospital.tiposangre";
+            wsClientImpl.loadDropDownList(dropDownList: bloodType, query, "idtiposangre", "sangre");
         }
     }
 }
