@@ -13,6 +13,7 @@
                     <label class="font-weight-bold">Documento</label>
                     <div class="form-check form-check-inline">
                         <asp:DropDownList ID="documentType" runat="server" OnSelectedIndexChanged="documentType_SelectedIndexChanged" AutoPostBack="True">
+                            <asp:ListItem Text="Seleccionar" Value="Seleccionar" />
                             <asp:ListItem Text="Cedula" Value="C" />
                             <asp:ListItem Text="Pasaporte" Value="P" />
                         </asp:DropDownList>
@@ -35,20 +36,12 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-md-3">
-                    <label>Sexo</label>
-                    <div class="container">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="radioTypeSex" id="radioM" value="M">
-                            <label class="form-check-label" for="radioTypeM">
-                                Masculino
-                            </label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="radioTypeSex" id="radioF" value="F">
-                            <label class="form-check-label" for="radioTypeF">
-                                Femenino
-                            </label>
-                        </div>
+                    <label class="font-weight-bold">Sexo</label>
+                    <div class="form-check form-check-inline">
+                        <asp:DropDownList ID="sexType" runat="server">
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="sexTypeRequired" runat="server" ControlToValidate="sexType"
+                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
                     </div>
                 </div>
                 <div class="form-group col-md-4">

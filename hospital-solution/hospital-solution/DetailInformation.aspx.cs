@@ -1,4 +1,5 @@
-﻿using hospital_solution.Model;
+﻿using hospital_solution.Interfaces.Command.Service;
+using hospital_solution.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,14 @@ namespace hospital_solution
     public partial class DetailInformation : System.Web.UI.Page
     {
         PatientDTO patient = new PatientDTO();
+        WsclientImpl wsClientImpl = new WsclientImpl();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                BindDropDownList();
+            }
         }
 
         protected void documentType_SelectedIndexChanged(object sender, EventArgs e)
@@ -35,6 +41,12 @@ namespace hospital_solution
                     Console.WriteLine("No llego el dato documento");
                     break;
             }
+        }
+
+        private void BindDropDownList()
+        {
+            string query = "select * from hospital.sexo";
+            wsClientImpl.loadDropDownList(dropDownList: sexType, query, "valor", "descripcion");
         }
     }
 }
