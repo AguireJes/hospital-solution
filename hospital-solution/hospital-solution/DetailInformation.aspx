@@ -45,8 +45,8 @@
                     </div>
                 </div>
                 <div class="form-group col-md-4">
-                      <label class="font-weight-bold">Telefono</label>
-                    <asp:TextBox ID="inputPhone" runat="server" type="text" class="form-control input-id" placeholder="255-2338" required="true"> </asp:TextBox>
+                    <label class="font-weight-bold">Telefono</label>
+                    <asp:TextBox ID="inputPhone" runat="server" type="text" class="form-control" placeholder="255-2338" required="true"> </asp:TextBox>
                 </div>
                 <div class="form-group col-md-2">
                     <label class="font-weight-bold">Tipo de sangre</label>
@@ -64,16 +64,17 @@
                     <input type="file" class="form-control-file" id="filePhoto" required>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="inputEmail">Correo electronico</label>
-                    <input type="email" class="form-control" id="inputEmail" required>
+                    <label class="font-weight-bold">Email</label>
+                    <asp:TextBox ID="inputEmail" runat="server" type="text" class="form-control" required="true"> </asp:TextBox>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="inputCountry">Pais de nacimiento</label>
-                    <select id="inputCountry" class="form-control" required>
-                        <option selected disabled>Seleccionar</option>
-                        <option>Panama</option>
-                        <option>Colombia</option>
-                    </select>
+                    <label class="font-weight-bold">País de nacimiento</label>
+                    <div class="form-check form-check-inline">
+                        <asp:DropDownList ID="countryChoice" runat="server">
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="countryChoiceRequired" runat="server" ControlToValidate="countryChoice"
+                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
+                    </div>
                 </div>
             </div>
         </form>

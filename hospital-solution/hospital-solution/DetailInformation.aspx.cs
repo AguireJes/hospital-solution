@@ -20,6 +20,7 @@ namespace hospital_solution
             {
                 loadSexCatalog();
                 loadBloodCatalog();
+                loadCountryCatalog();
             }
         }
 
@@ -54,6 +55,12 @@ namespace hospital_solution
         {
             string query = "select * from hospital.tiposangre";
             wsClientImpl.loadDropDownList(dropDownList: bloodType, query, "idtiposangre", "sangre");
+        }
+
+        private void loadCountryCatalog()
+        {
+            string query = "select * from hospital.paises";
+            wsClientImpl.loadDropDownList(dropDownList: countryChoice, query, "idpaises", "pais");
         }
     }
 }
