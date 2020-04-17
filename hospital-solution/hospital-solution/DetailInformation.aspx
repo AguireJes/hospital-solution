@@ -81,53 +81,63 @@
     </div>
 
     <div class="container" id="locationSection">
-        <h2>Localizacion</h2>
         <form>
             <div class="form-row">
                 <div class="form-group col-md-4">
-                    <label for="inputDistrict">Distrito</label>
-                    <select id="inputDistrict" class="form-control" required>
-                        <option selected disabled>Seleccionar</option>
-                        <option>Panama</option>
-                        <option>Tocumen</option>
-                    </select>
+                    <label class="font-weight-bold">Distrito</label>
+                    <div class="form-check form-check-inline">
+                        <asp:DropDownList ID="districtChoice" runat="server">
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="districtChoiceRequired" runat="server" ControlToValidate="districtChoice"
+                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
+                    </div>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="inputDistrict">Corregimiento</label>
-                    <select id="inputTownship" class="form-control" required>
-                        <option selected disabled>Seleccionar</option>
-                        <option>Panamá</option>
-                        <option>Tocumen</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="inputDistrict">Barriada</label>
-                    <select id="inputSlum" class="form-control" required>
-                        <option selected disabled>Seleccionar</option>
-                        <option>Panamá</option>
-                        <option>Tocumen</option>
-                    </select>
+                    <label class="font-weight-bold">Corregimiento</label>
+                    <div class="form-check form-check-inline">
+                        <asp:DropDownList ID="townshipChoice" runat="server">
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="townshipChoiceRequired" runat="server" ControlToValidate="townshipChoice"
+                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
+                    </div>
                 </div>
             </div>
 
             <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="inputLivingPlace">Seleccione tipo de vivienda</label>
-                    <select id="inputLivingPlace" class="form-control" required>
-                        <option selected disabled>Seleccionar</option>
-                        <option>Casa</option>
-                        <option>Aparatamento</option>
-                    </select>
+                <div class="form-group col-md-3">
+                    <label class="font-weight-bold">Seleccione tipo de vivienda</label>
+                    <div class="form-check form-check-inline">
+                        <asp:DropDownList ID="houseType" runat="server">
+                            <asp:ListItem Text="Seleccionar" Value="Seleccionar" />
+                            <asp:ListItem Text="Casa" Value="C" />
+                            <asp:ListItem Text="Apartamento" Value="P" />
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="houseTypeRequired" runat="server" ControlToValidate="houseType"
+                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
+                    </div>
                 </div>
-                <div class="form-group col-md-4">
-                    <label for="inputDistrict">Edificio</label>
-                    <select id="inputBuilding" class="form-control" required>
-                        <option selected disabled>Seleccionar</option>
-                        <option>PH Sol</option>
-                        <option>PH Reserva santa fé</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-4">
+                <asp:Panel ID="fieldBuilding" runat="server" Visible="false">
+                    <div class="form-group col-md-3">
+                        <label for="inputDistrict">Edificio</label>
+                        <select id="inputBuilding" class="form-control" required>
+                            <option selected disabled>Seleccionar</option>
+                            <option>PH Sol</option>
+                            <option>PH Reserva santa fé</option>
+                        </select>
+                    </div>
+                </asp:Panel>
+                <asp:Panel ID="fieldSlum" runat="server" Visible="false">
+                    <div class="form-group col-md-3">
+                        <label class="font-weight-bold">Barriada</label>
+                        <div class="form-check form-check-inline">
+                            <asp:DropDownList ID="slumChoice" runat="server">
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="slumChoiceRequired" runat="server" ControlToValidate="slumChoice"
+                                ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                </asp:Panel>
+                <div class="form-group col-md-3">
                     <label for="inputNumberPlace">Numero de casa o apartamento</label>
                     <input type="text" class="form-control" id="inputNumberPlace" required>
                 </div>
@@ -140,83 +150,71 @@
         <form>
             <div class="form-row">
                 <div class="form-group col-md-2">
-                    <label>¿Tiene sintomas?</label>
-                    <div class="container">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="radioTypeSymptom" id="radioTypeSymptomS" value="S">
-                            <label class="form-check-label" for="radioSymptomS">
-                                Sí
-                            </label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="radioTypeSymptom" id="radioTypeSymptomN" value="N">
-                            <label class="form-check-label" for="radioSymptomN">
-                                No
-                            </label>
-                        </div>
+                    <label class="font-weight-bold">¿Tiene sintomas?</label>
+                    <div class="form-check form-check-inline">
+                        <asp:DropDownList ID="haveSymptom" runat="server">
+                            <asp:ListItem Text="Seleccionar" Value="Seleccionar" />
+                            <asp:ListItem Text="Si" Value="S" />
+                            <asp:ListItem Text="No" Value="N" />
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="haveSymptomRequired" runat="server" ControlToValidate="haveSymptom"
+                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
                     </div>
                 </div>
-                <div class="form-group col-md-3" id="divChooseSymptom" style="display: none">
-                    <label for="inputSymptom">Sintomas</label>
-                    <select id="inputSymptom" class="form-control" multiple="multiple" required>
-                        <option selected disabled>Seleccionar</option>
-                        <option>Fiebre</option>
-                        <option>Tos</option>
-                    </select>
-                </div>
+                <asp:Panel ID="fieldHaveSymptom" runat="server" Visible="true">
+                    <div class="form-group col-md-3">
+                        <label class="font-weight-bold">Sintomas</label>
+                        <div class="form-check form-check-inline">
+                            <asp:ListBox ID="symptoms" runat="server" SelectionMode="Multiple"></asp:ListBox>
+                            <asp:RequiredFieldValidator ID="symptomsRequired" runat="server" ControlToValidate="symptoms"
+                                ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                </asp:Panel>
                 <div class="form-group col-md-3">
-                    <label>¿Viajo recientemente a un país?</label>
-                    <div class="container">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="radioTypeCountry" id="radioTypeCountryS" value="S">
-                            <label class="form-check-label" for="radioCountryS">
-                                Sí
-                            </label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="radioTypeCountry" id="radioTypeCountryN" value="N">
-                            <label class="form-check-label" for="radioCountryN">
-                                No
-                            </label>
-                        </div>
+                    <label class="font-weight-bold">¿Viajo recientemente a un país?</label>
+                    <div class="form-check form-check-inline">
+                        <asp:DropDownList ID="travelCountry" runat="server">
+                            <asp:ListItem Text="Seleccionar" Value="Seleccionar" />
+                            <asp:ListItem Text="Si" Value="S" />
+                            <asp:ListItem Text="No" Value="N" />
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="travelCountryRequired" runat="server" ControlToValidate="travelCountry"
+                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
                     </div>
                 </div>
-                <div class="form-group col-md-3" id="divChooseCountry" style="display: none">
-                    <label for="inputTravelCountry">Seleccione país</label>
-                    <select id="inputTravelCountry" class="form-control" multiple="multiple" required>
-                        <option selected disabled>Seleccionar</option>
-                        <option>Panamá</option>
-                        <option>Estados unidos</option>
-                    </select>
-                </div>
+                <asp:Panel ID="fieldTravelCountry" runat="server" Visible="true">
+                    <div class="form-group col-md-3">
+                        <label class="font-weight-bold">Seleccione Paises</label>
+                        <div class="form-check form-check-inline">
+                            <asp:ListBox ID="chooseTravelCountry" runat="server" SelectionMode="Multiple"></asp:ListBox>
+                            <asp:RequiredFieldValidator ID="chooseTravelCountryRequired" runat="server" ControlToValidate="chooseTravelCountry"
+                                ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                </asp:Panel>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label>¿Mantuvo contacto con una persona con problemas respiratorios?</label>
-                    <div class="container">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="radioProblem" id="radioProblemS" value="S">
-                            <label class="form-check-label" for="radioProblemS">
-                                Sí
-                            </label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="radioProblem" id="radioProblemN" value="N">
-                            <label class="form-check-label" for="radioProblemN">
-                                No
-                            </label>
-                        </div>
+                    <label class="font-weight-bold">¿Mantuvo contacto con una persona con problemas respiratorios?</label>
+                    <div class="form-check form-check-inline">
+                        <asp:DropDownList ID="chooseContact" runat="server">
+                            <asp:ListItem Text="Seleccionar" Value="Seleccionar" />
+                            <asp:ListItem Text="Si" Value="S" />
+                            <asp:ListItem Text="No" Value="N" />
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="chooseContactRequired" runat="server" ControlToValidate="chooseContact"
+                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
                     </div>
                 </div>
-                <div class="form-group col-md-5" id="divInfoParticipants" style="display: none">
-                    <button type="submit" class="btn btn-secondary">Ingresar información</button>
+                <div class="form-group col-md-6">
+                    <label class="font-weight-bold">Cantidad de personas</label>
+                    <asp:TextBox ID="quantityPersons" runat="server" type="text" class="form-control" required="true"> </asp:TextBox>
                 </div>
             </div>
-        </form>
-        <div class="form-row">
             <div class="form-group col-md-2" id="saveInfoDetailButton">
                 <button type="submit" class="btn btn-lg btn-block btn btn-dark text-uppercase">Guardar</button>
             </div>
-        </div>
+        </form>
     </div>
 </asp:Content>

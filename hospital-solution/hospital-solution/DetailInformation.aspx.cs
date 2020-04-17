@@ -1,17 +1,10 @@
 ﻿using hospital_solution.Interfaces.Command.Service;
-using hospital_solution.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace hospital_solution
 {
     public partial class DetailInformation : System.Web.UI.Page
     {
-        PatientDTO patient = new PatientDTO();
         WsclientImpl wsClientImpl = new WsclientImpl();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -21,13 +14,13 @@ namespace hospital_solution
                 loadSexCatalog();
                 loadBloodCatalog();
                 loadCountryCatalog();
-            }
+            }   
         }
 
         protected void documentType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            patient.documentType = documentType.SelectedItem.Value;
-            switch (patient.documentType)
+           
+            switch (documentType.SelectedItem.Value)
             {
                 case "C":
                     fieldId.Visible = true;
