@@ -14,6 +14,9 @@ namespace hospital_solution
                 loadSexCatalog();
                 loadBloodCatalog();
                 loadCountryCatalog();
+                loadDistrictCatalog();
+                loadCountryRiskCatalog();
+                loadSymptomCatalog();
             }   
         }
 
@@ -54,6 +57,39 @@ namespace hospital_solution
         {
             string query = "select * from hospital.paises";
             wsClientImpl.loadDropDownList(dropDownList: countryChoice, query, "idpaises", "pais");
+        }
+
+        private void loadDistrictCatalog()
+        {
+            string query = "select * from hospital.distrito";
+            wsClientImpl.loadDropDownList(dropDownList: districtChoice, query, "iddistrito", "descripcion");
+        }
+
+        private void loadCountryRiskCatalog()
+        {
+            string query = "select * from  hospital.paises where riesgo = 'S'";
+            wsClientImpl.loadListBox(listBox: chooseTravelCountry, query, "idpaises", "pais");
+        }
+
+        private void loadSymptomCatalog()
+        {
+            string query = "select * from hospital.sintomas";
+            wsClientImpl.loadListBox(listBox: symptoms, query, "idsintomas", "descripcion");
+        }
+
+        protected void houseType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void haveSymptom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void travelCountry_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

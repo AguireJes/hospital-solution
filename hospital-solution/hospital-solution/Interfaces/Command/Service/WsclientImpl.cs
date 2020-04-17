@@ -64,6 +64,29 @@ namespace hospital_solution.Interfaces.Command.Service
             }
         }
 
+        public void loadListBox(ListBox listBox, string querySentence, string valueField, string textField)
+        {
+            try
+            {
+                MySqlConnection connectionBd = connection.getConnection();
+
+                MySqlCommand cmd;
+                cmd = new MySqlCommand(querySentence, connectionBd);
+
+                listBox.DataSource = cmd.ExecuteReader();
+                listBox.DataTextField = textField;
+                listBox.DataValueField = valueField;
+                listBox.DataBind();
+                connectionBd.Close();
+
+                listBox.Items.Insert(0, new ListItem("Seleccionar", "Seleccionar"));
+            }
+            catch (Exception exc)
+            {
+                showMessage("Error Message", exc.Message);
+            }
+        }
+
         private static void showMessage(string v, string message)
         {
             throw new NotImplementedException(message);

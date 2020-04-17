@@ -18,7 +18,7 @@
                             <asp:ListItem Text="Pasaporte" Value="P" />
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="documentTypeRequired" runat="server" ControlToValidate="documentType"
-                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
+                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
                     </div>
                 </div>
                 <asp:Panel ID="fieldId" runat="server" Visible="false">
@@ -41,7 +41,7 @@
                         <asp:DropDownList ID="sexType" runat="server">
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="sexTypeRequired" runat="server" ControlToValidate="sexType"
-                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
+                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
                     </div>
                 </div>
                 <div class="form-group col-md-4">
@@ -54,7 +54,7 @@
                         <asp:DropDownList ID="bloodType" runat="server">
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="bloodTypeRequired" runat="server" ControlToValidate="bloodType"
-                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
+                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                         <asp:DropDownList ID="countryChoice" runat="server">
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="countryChoiceRequired" runat="server" ControlToValidate="countryChoice"
-                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
+                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
                     </div>
                 </div>
             </div>
@@ -89,7 +89,7 @@
                         <asp:DropDownList ID="districtChoice" runat="server">
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="districtChoiceRequired" runat="server" ControlToValidate="districtChoice"
-                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
+                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
                     </div>
                 </div>
                 <div class="form-group col-md-4">
@@ -98,7 +98,7 @@
                         <asp:DropDownList ID="townshipChoice" runat="server">
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="townshipChoiceRequired" runat="server" ControlToValidate="townshipChoice"
-                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
+                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
                     </div>
                 </div>
             </div>
@@ -107,13 +107,13 @@
                 <div class="form-group col-md-3">
                     <label class="font-weight-bold">Seleccione tipo de vivienda</label>
                     <div class="form-check form-check-inline">
-                        <asp:DropDownList ID="houseType" runat="server">
+                        <asp:DropDownList ID="houseType" runat="server" OnSelectedIndexChanged="houseType_SelectedIndexChanged">
                             <asp:ListItem Text="Seleccionar" Value="Seleccionar" />
                             <asp:ListItem Text="Casa" Value="C" />
                             <asp:ListItem Text="Apartamento" Value="P" />
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="houseTypeRequired" runat="server" ControlToValidate="houseType"
-                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
+                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
                     </div>
                 </div>
                 <asp:Panel ID="fieldBuilding" runat="server" Visible="false">
@@ -133,7 +133,7 @@
                             <asp:DropDownList ID="slumChoice" runat="server">
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="slumChoiceRequired" runat="server" ControlToValidate="slumChoice"
-                                ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
+                                ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                 </asp:Panel>
@@ -152,13 +152,13 @@
                 <div class="form-group col-md-2">
                     <label class="font-weight-bold">¿Tiene sintomas?</label>
                     <div class="form-check form-check-inline">
-                        <asp:DropDownList ID="haveSymptom" runat="server">
+                        <asp:DropDownList ID="haveSymptom" runat="server" OnSelectedIndexChanged="haveSymptom_SelectedIndexChanged">
                             <asp:ListItem Text="Seleccionar" Value="Seleccionar" />
                             <asp:ListItem Text="Si" Value="S" />
                             <asp:ListItem Text="No" Value="N" />
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="haveSymptomRequired" runat="server" ControlToValidate="haveSymptom"
-                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
+                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
                     </div>
                 </div>
                 <asp:Panel ID="fieldHaveSymptom" runat="server" Visible="true">
@@ -167,20 +167,20 @@
                         <div class="form-check form-check-inline">
                             <asp:ListBox ID="symptoms" runat="server" SelectionMode="Multiple"></asp:ListBox>
                             <asp:RequiredFieldValidator ID="symptomsRequired" runat="server" ControlToValidate="symptoms"
-                                ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
+                                ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                 </asp:Panel>
                 <div class="form-group col-md-3">
                     <label class="font-weight-bold">¿Viajo recientemente a un país?</label>
                     <div class="form-check form-check-inline">
-                        <asp:DropDownList ID="travelCountry" runat="server">
+                        <asp:DropDownList ID="travelCountry" runat="server" OnSelectedIndexChanged="travelCountry_SelectedIndexChanged">
                             <asp:ListItem Text="Seleccionar" Value="Seleccionar" />
                             <asp:ListItem Text="Si" Value="S" />
                             <asp:ListItem Text="No" Value="N" />
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="travelCountryRequired" runat="server" ControlToValidate="travelCountry"
-                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
+                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
                     </div>
                 </div>
                 <asp:Panel ID="fieldTravelCountry" runat="server" Visible="true">
@@ -189,7 +189,7 @@
                         <div class="form-check form-check-inline">
                             <asp:ListBox ID="chooseTravelCountry" runat="server" SelectionMode="Multiple"></asp:ListBox>
                             <asp:RequiredFieldValidator ID="chooseTravelCountryRequired" runat="server" ControlToValidate="chooseTravelCountry"
-                                ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
+                                ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                 </asp:Panel>
@@ -204,16 +204,18 @@
                             <asp:ListItem Text="No" Value="N" />
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="chooseContactRequired" runat="server" ControlToValidate="chooseContact"
-                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="sendDetail"></asp:RequiredFieldValidator>
+                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
                     </div>
                 </div>
                 <div class="form-group col-md-6">
                     <label class="font-weight-bold">Cantidad de personas</label>
-                    <asp:TextBox ID="quantityPersons" runat="server" type="text" class="form-control" required="true"> </asp:TextBox>
+                    <asp:TextBox ID="quantityPersons" runat="server" type="text" class="form-control"> </asp:TextBox>
                 </div>
             </div>
-            <div class="form-group col-md-2" id="saveInfoDetailButton">
-                <button type="submit" class="btn btn-lg btn-block btn btn-dark text-uppercase">Guardar</button>
+            <div class="row">
+                <div class="col-2">
+                    <asp:Button ID="savePatient" runat="server" Text="Guardar" class="btn btn-lg btn-block btn btn-dark" type="submit" ValidationGroup="savePatient"/>
+                </div>
             </div>
         </form>
     </div>
