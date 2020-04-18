@@ -4,10 +4,8 @@
 -- Truncate tables
 -- -----------------------------------------------------
 
-truncate table hospital.barriada;
 truncate table hospital.corregimiento;
 truncate table hospital.distrito;
-truncate table hospital.edificios;
 truncate table hospital.login;
 truncate table hospital.paises;
 truncate table hospital.sexo;
@@ -375,6 +373,45 @@ INSERT INTO `hospital`.`distrito` (`iddistrito`,`descripcion`,`provincia`) VALUE
 
 COMMIT;
 
+
+-- -----------------------------------------------------
+-- Corregimiento Preliminar
+-- -----------------------------------------------------
+START TRANSACTION;
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'ALMIRANTE',1);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'BARRIADA GUAYMÍ',1);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'BARRIO FRANCÉS',1);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'NANCE DE RISCÓ',1);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'VALLE DE AGUAS ARRIBA',1);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'VALLE DE RISCÓ',1);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'BASTIMENTOS',2);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'BOCAS DEL TORO',2);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'CAUCHERO',2);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'PUNTA LAUREL',2);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'TIERRA OSCURA',2);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'CHANGUINOLA',3);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'COCHIGRO',3);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'EL EMPALME',3);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'GUABITO',3);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'LA GLORIA',3);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'LAS DELICIAS',3);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'LAS TABLAS',3);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'BARRIADA 4 DE ABRIL',3);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'EL TERIBE',3);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'FINCA 30',3);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'FINCA 60',3);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'FINCA 6',3);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'EL SILENCIO',3);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'BAJO CEDRO',4);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'CHIRIQUÍ GRANDE',4);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'MIRAMAR',4);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'PUNTA PEÑA',4);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'PUNTA ROBALO',4);
+INSERT INTO `hospital`.`corregimiento` (`idcorregimiento`,`descripcion`,`iddistrito`) VALUES (DEFAULT,'RAMBALA',4);
+
+
+COMMIT;
+
 -----------------------------------------------------
 -- UPDATE paises riesgo
 -- -----------------------------------------------------
@@ -386,10 +423,8 @@ where idpaises in (39,90,59,60,3,145);
 -- Verificacion
 -- -----------------------------------------------------
 
-select * from hospital.barriada;
 select * from hospital.corregimiento;
 select * from hospital.distrito;
-select * from hospital.edificios;
 select * from hospital.login;
 select * from hospital.paises;
 select * from hospital.sexo;
