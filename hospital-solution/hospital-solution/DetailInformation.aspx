@@ -199,7 +199,7 @@
         </div>
         <div class="form-group col-md-6">
             <label class="font-weight-bold">Cantidad de personas</label>
-            <asp:TextBox ID="quantityPersons" runat="server" type="text" class="form-control"> </asp:TextBox>
+            <asp:TextBox ID="quantityPersons" runat="server" type="text" class="form-control" Width="90px"> </asp:TextBox>
         </div>
     </div>
     <br />
