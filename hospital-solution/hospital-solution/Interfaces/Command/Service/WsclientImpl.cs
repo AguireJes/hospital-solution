@@ -246,29 +246,39 @@ namespace hospital_solution.Interfaces.Command.Service
                 if (tb != null)
                 {
                     String chart = "";
+                    string fillColor = "'rgba(14,72,100,1)'";
+                    string backgroundColor = "'rgba(255,99,132,0.2)'";
+                    string borderColor = "'rgba(255,99,132,1)'";
+                    string borderWidth = "'2'";
+                    string hoverBackgroundColor = "'rgba(255,99,132,0.4)'";
+                    string hoverBorderColor = "'rgba(255,99,132,1)'";
+
                     chart = "<canvas id=\"line-chart\" width=\"100%\" height=\"40\"></canvas>";
                     chart += "<script>";
-                    chart += "new Chart(document.getElementById(\"line-chart\"), { type: 'line', data: {labels: [";
+                    chart += "new Chart(document.getElementById(\"line-chart\"), { type: 'bar', data: {labels: [";
 
-                    // Labels
-                    for (int i = 0; i < 2; i++)
-                        chart += i.ToString() + ",";
+                    for (int i = 0; i < tb.Rows.Count; i++)
+                    {
+                        chart += "'"+tb.Rows[i]["descripcion"].ToString()+"',";
+                    }
                     chart = chart.Substring(0, chart.Length - 1);
 
-                    chart += "],datasets: [{ data: [";
+                    chart += "] ,datasets: [{ label:";
+                    chart += "'Cantidad de pacientes'" + ",";
+                    chart += "data:[";
 
-                    // get data from database and add to chart
-                    String value = "";
+                    string value = "";
                     for (int i = 0; i < tb.Rows.Count; i++)
-                        value += tb.Rows[i]["count(idpacientes)"].ToString();
-                    value = value.Substring(0, value.Length - 1);
-                    chart += value;
+                    {
+                        value += tb.Rows[i]["count(idpacientes)"].ToString() + ",";
+                        chart += value;
+                        value = String.Empty;
+                    }
+                    chart = chart.Substring(0, chart.Length - 1);
 
-                    chart += "],label: \"Corregimientos\",borderColor: \"#97abb1\",fill: true}"; // Chart color
-                    chart += "]},options: { title: { display: true,text: 'Corregimientos'} }"; // Chart title
+                    chart += "], fillColor: "+ fillColor+ ", backgroundColor: "+backgroundColor+", borderColor: "+borderColor+", borderWidth: "+borderWidth+", hoverBackgroundColor: "+hoverBackgroundColor+", hoverBorderColor: "+hoverBorderColor+" }]}, options: { title: { display: true, text: 'Cantidad de pacientes por corregimientos'}, scales:{yAxes:[{stacked:true}]}}";
                     chart += "});";
                     chart += "</script>";
-
                     chartResponse.Text = chart;
                 }
             }
