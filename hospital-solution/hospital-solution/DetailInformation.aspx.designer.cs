@@ -213,6 +213,15 @@ namespace hospital_solution
         protected global::System.Web.UI.WebControls.Panel fieldBuilding;
 
         /// <summary>
+        /// Control buildingInput.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox buildingInput;
+
+        /// <summary>
         /// Control fieldSlum.
         /// </summary>
         /// <remarks>
@@ -240,22 +249,31 @@ namespace hospital_solution
         protected global::System.Web.UI.WebControls.RequiredFieldValidator slumChoiceRequired;
 
         /// <summary>
-        /// Control haveSymptom.
+        /// Control numberHouseOrAp.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList haveSymptom;
+        protected global::System.Web.UI.WebControls.TextBox numberHouseOrAp;
 
         /// <summary>
-        /// Control haveSymptomRequired.
+        /// Control haveSymptops.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator haveSymptomRequired;
+        protected global::System.Web.UI.WebControls.DropDownList haveSymptops;
+
+        /// <summary>
+        /// Control haveSymptopsRequired.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator haveSymptopsRequired;
 
         /// <summary>
         /// Control fieldHaveSymptom.

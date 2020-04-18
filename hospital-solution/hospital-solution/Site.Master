@@ -70,6 +70,14 @@
             width: 200px;
         }
 
+        .document{
+            margin-top: -11px;
+        }
+
+        .btn-save{
+            margin-left: 10px;
+        }
+
     </style>
 </head>
 <body>
