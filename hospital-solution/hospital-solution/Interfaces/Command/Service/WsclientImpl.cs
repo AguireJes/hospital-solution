@@ -2,17 +2,20 @@
 using hospital_solution.Interfaces.Command.Api;
 using MySql.Data.MySqlClient;
 using System;
+using System.Web.UI.WebControls;
 
 namespace hospital_solution.Interfaces.Command.Service
 {
     public class WsclientImpl : Wsclient
     {
-        public bool SignIn(string user, string pass)
+        ConnectionImpl connection = new ConnectionImpl();
+
+        public bool signIn(string user, string pass)
         {
             Boolean response = false;
             try
             {
-                ConnectionImpl connection = new ConnectionImpl();
+                
                 MySqlConnection connectionBd = connection.getConnection();
 
                 string query = "select count(1) from hospital.login where username = @username and password = @password";
@@ -36,7 +39,53 @@ namespace hospital_solution.Interfaces.Command.Service
                 showMessage("Error Message", exc.Message);
             }
             return response;
-    }
+        }
+
+        public void loadDropDownList(DropDownList dropDownList, string querySentence, string valueField, string textField)
+        {
+            try
+            {
+                MySqlConnection connectionBd = connection.getConnection();
+
+                MySqlCommand cmd;
+                cmd = new MySqlCommand(querySentence, connectionBd);
+                
+                dropDownList.DataSource = cmd.ExecuteReader();
+                dropDownList.DataTextField = textField;
+                dropDownList.DataValueField = valueField;
+                dropDownList.DataBind();
+                connectionBd.Close();
+                
+                dropDownList.Items.Insert(0, new ListItem("Seleccionar", "Seleccionar"));
+            }
+            catch (Exception exc)
+            {
+                showMessage("Error Message", exc.Message);
+            }
+        }
+
+        public void loadListBox(ListBox listBox, string querySentence, string valueField, string textField)
+        {
+            try
+            {
+                MySqlConnection connectionBd = connection.getConnection();
+
+                MySqlCommand cmd;
+                cmd = new MySqlCommand(querySentence, connectionBd);
+
+                listBox.DataSource = cmd.ExecuteReader();
+                listBox.DataTextField = textField;
+                listBox.DataValueField = valueField;
+                listBox.DataBind();
+                connectionBd.Close();
+
+                listBox.Items.Insert(0, new ListItem("Seleccionar", "Seleccionar"));
+            }
+            catch (Exception exc)
+            {
+                showMessage("Error Message", exc.Message);
+            }
+        }
 
         private static void showMessage(string v, string message)
         {

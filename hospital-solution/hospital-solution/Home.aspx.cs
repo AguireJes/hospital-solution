@@ -19,7 +19,7 @@ namespace hospital_solution
 
         protected void signIn_Click(object sender, EventArgs e)
         {
-            if (wsclient.SignIn(inputUser.Text, inputPassword.Text))
+            if (wsclient.signIn(inputUser.Text, inputPassword.Text))
             {
                 Response.Redirect("~/Dashboard.aspx");
             }
