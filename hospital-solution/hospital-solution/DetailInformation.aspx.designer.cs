@@ -168,6 +168,15 @@ namespace hospital_solution
         protected global::System.Web.UI.WebControls.RequiredFieldValidator districtChoiceRequired;
 
         /// <summary>
+        /// Control fieldTownShip.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel fieldTownShip;
+
+        /// <summary>
         /// Control townshipChoice.
         /// </summary>
         /// <remarks>

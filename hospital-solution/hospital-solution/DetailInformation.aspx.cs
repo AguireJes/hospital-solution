@@ -54,6 +54,7 @@ namespace hospital_solution
             wsClientImpl.loadListBox(listBox: symptoms, query, "idsintomas", "descripcion");
         }
 
+
         //Protected methods
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -139,6 +140,13 @@ namespace hospital_solution
                     Console.WriteLine("No llego el dato documento");
                     break;
             }
+        }
+
+        protected void districtChoice_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string query = "select * from hospital.corregimiento where distrito = @district";
+            wsClientImpl.loadDropDownList(dropDownList: townshipChoice, query, "iddistrito", "descripcion", districtChoice.SelectedValue);
+            fieldTownShip.Visible = true;
         }
     }
 }

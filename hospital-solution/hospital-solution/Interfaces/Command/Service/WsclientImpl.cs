@@ -49,13 +49,36 @@ namespace hospital_solution.Interfaces.Command.Service
 
                 MySqlCommand cmd;
                 cmd = new MySqlCommand(querySentence, connectionBd);
-                
+
                 dropDownList.DataSource = cmd.ExecuteReader();
                 dropDownList.DataTextField = textField;
                 dropDownList.DataValueField = valueField;
                 dropDownList.DataBind();
                 connectionBd.Close();
                 
+                dropDownList.Items.Insert(0, new ListItem("Seleccionar", "Seleccionar"));
+            }
+            catch (Exception exc)
+            {
+                showMessage("Error Message", exc.Message);
+            }
+        }
+
+        public void loadDropDownList(DropDownList dropDownList, string querySentence, string valueField, string textField, string district)
+        {
+            try
+            {
+                MySqlConnection connectionBd = connection.getConnection();
+
+                MySqlCommand cmd;
+                cmd = new MySqlCommand(querySentence, connectionBd);
+                cmd.Parameters.AddWithValue("@distric", district);
+                dropDownList.DataSource = cmd.ExecuteReader();
+                dropDownList.DataTextField = textField;
+                dropDownList.DataValueField = valueField;
+                dropDownList.DataBind();
+                connectionBd.Close();
+
                 dropDownList.Items.Insert(0, new ListItem("Seleccionar", "Seleccionar"));
             }
             catch (Exception exc)
