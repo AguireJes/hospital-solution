@@ -120,6 +120,7 @@
     <Content Include="Home.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="RelationPatient.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -291,6 +292,13 @@
     <Compile Include="Model\ContactDTO.cs" />
     <Compile Include="Model\PatientDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelationPatient.aspx.cs">
+      <DependentUpon>RelationPatient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RelationPatient.aspx.designer.cs">
+      <DependentUpon>RelationPatient.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
