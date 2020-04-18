@@ -72,7 +72,7 @@ namespace hospital_solution.Interfaces.Command.Service
 
                 MySqlCommand cmd;
                 cmd = new MySqlCommand(querySentence, connectionBd);
-                cmd.Parameters.AddWithValue("@distric", district);
+                cmd.Parameters.AddWithValue("@district", district);
                 dropDownList.DataSource = cmd.ExecuteReader();
                 dropDownList.DataTextField = textField;
                 dropDownList.DataValueField = valueField;
