@@ -6,7 +6,7 @@
         <div class="form-row">
             <div class="form-group col-md-3">
                 <label class="font-weight-bold">Nombre</label>
-                <asp:TextBox ID="inputName" runat="server" type="text" class="form-control" placeholder="Nombre completo" required="true"> </asp:TextBox>
+                <asp:TextBox ID="inputName" runat="server" type="text" class="form-control" placeholder="Nombre completo" required="true" MaxLength="30"> </asp:TextBox>
             </div>
             <div class="form-group col-md-3">
                 <label class="font-weight-bold">Documento</label>
@@ -23,13 +23,13 @@
             <asp:Panel ID="fieldId" runat="server" Visible="false">
                 <div class="form-group col-md-3">
                     <label class="font-weight-bold">Cedula</label>
-                    <asp:TextBox ID="inputId" runat="server" type="text" class="form-control input-id" placeholder="8-909-1919" required="true"> </asp:TextBox>
+                    <asp:TextBox ID="inputId" runat="server" type="text" class="form-control input-id" placeholder="8-909-1919" required="true" MaxLength="30"> </asp:TextBox>
                 </div>
             </asp:Panel>
             <asp:Panel ID="fieldPassport" runat="server" Visible="false">
                 <div class="form-group col-md-3">
                     <label class="font-weight-bold">Pasaporte</label>
-                    <asp:TextBox ID="inputPassport" runat="server" type="text" class="form-control input-id" placeholder="123456789" required="true"> </asp:TextBox>
+                    <asp:TextBox ID="inputPassport" runat="server" type="text" class="form-control input-id" placeholder="123456789" required="true" MaxLength="30"> </asp:TextBox>
                 </div>
             </asp:Panel>
         </div>
@@ -45,7 +45,7 @@
             </div>
             <div class="form-group col-md-4">
                 <label class="font-weight-bold">Telefono</label>
-                <asp:TextBox ID="inputPhone" runat="server" type="text" class="form-control" placeholder="255-2338" required="true"> </asp:TextBox>
+                <asp:TextBox ID="inputPhone" runat="server" type="text" class="form-control" placeholder="255-2338" required="true" MaxLength="12"> </asp:TextBox>
             </div>
             <div class="form-group col-md-3">
                 <label class="font-weight-bold">Tipo de sangre</label>
@@ -60,7 +60,7 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label class="font-weight-bold">Email</label>
-                <asp:TextBox ID="inputEmail" runat="server" type="text" class="form-control"> </asp:TextBox>
+                <asp:TextBox ID="inputEmail" runat="server" type="text" class="form-control" MaxLength="20"> </asp:TextBox>
             </div>
             <div class="form-group col-md-4">
                 <label class="font-weight-bold">País de nacimiento</label>
@@ -108,11 +108,11 @@
             </div>
             <div class="form-group col-md-3">
                 <label class="font-weight-bold">Residencia</label>
-                <asp:TextBox ID="houseInput" runat="server" type="text" class="form-control input-id" required="true"> </asp:TextBox>
+                <asp:TextBox ID="houseInput" runat="server" type="text" class="form-control input-id" required="true" MaxLength="60"> </asp:TextBox>
             </div>
             <div class="form-group col-md-3">
                 <label class="font-weight-bold">Número de casa o apartamento</label>
-                <asp:TextBox ID="numberHouseOrAp" runat="server" type="text" class="form-control input-id" required="true"> </asp:TextBox>
+                <asp:TextBox ID="numberHouseOrAp" runat="server" type="text" class="form-control input-id" required="true" MaxLength="5"> </asp:TextBox>
             </div>
         </div>
         <br />
@@ -182,7 +182,7 @@
             </div>
             <div class="form-group col-md-4">
                 <label class="font-weight-bold">Cantidad de personas con quien vive</label>
-                <asp:TextBox ID="quantityPersons" runat="server" type="text" class="form-control" Width="90px"> </asp:TextBox>
+                <asp:TextBox ID="quantityPersons" runat="server" type="text" class="form-control" Width="90px" MaxLength="2"> </asp:TextBox>
             </div>
         </div>
         <br />

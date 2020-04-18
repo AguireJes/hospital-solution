@@ -7,7 +7,7 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label class="font-weight-bold">Nombre</label>
-                <asp:TextBox ID="inputName" runat="server" type="text" class="form-control" placeholder="Nombre completo"> </asp:TextBox>
+                <asp:TextBox ID="inputName" runat="server" type="text" class="form-control" placeholder="Nombre completo" MaxLength="30"> </asp:TextBox>
             </div>
             <div class="form-group col-md-4">
                 <label class="font-weight-bold">Sexo</label>
@@ -32,11 +32,11 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label class="font-weight-bold">Telefono</label>
-                <asp:TextBox ID="inputPhone" runat="server" type="text" class="form-control" placeholder="255-2338"> </asp:TextBox>
+                <asp:TextBox ID="inputPhone" runat="server" type="text" class="form-control" placeholder="255-2338" MaxLength="12"> </asp:TextBox>
             </div>
             <div class="form-group col-md-4">
                 <label class="font-weight-bold">Email</label>
-                <asp:TextBox ID="inputEmail" runat="server" type="text" class="form-control"> </asp:TextBox>
+                <asp:TextBox ID="inputEmail" runat="server" type="text" class="form-control" MaxLength="20"> </asp:TextBox>
             </div>
             <div class="form-group col-md-4">
                 <label class="font-weight-bold">País de nacimiento</label>
