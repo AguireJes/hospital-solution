@@ -1,4 +1,5 @@
 ﻿using hospital_solution.Interfaces.Command.Service;
+using hospital_solution.Model;
 using System;
 
 namespace hospital_solution
@@ -7,14 +8,7 @@ namespace hospital_solution
     {
         WsclientImpl wsClientImpl = new WsclientImpl();
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (!IsPostBack)
-            {
-                LoadCatalogs();
-            }
-        }
-
+        //Private methods
         private void LoadCatalogs()
         {
             LoadSexCatalog();
@@ -23,6 +17,7 @@ namespace hospital_solution
             LoadDistrictCatalog();
             LoadCountryRiskCatalog();
             LoadSymptomCatalog();
+            LoadHouseTypeCatalog();
         }
 
         private void LoadSexCatalog()
@@ -61,16 +56,32 @@ namespace hospital_solution
             wsClientImpl.loadListBox(listBox: symptoms, query, "idsintomas", "descripcion");
         }
 
+        private void LoadHouseTypeCatalog()
+        {
+            string query = "select * from hospital.tipovivienda";
+            wsClientImpl.loadDropDownList(dropDownList: houseType, query, "idtipovivienda", "descripcion");
+        }
+
+
+        //Protected methods
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                LoadCatalogs();
+            }
+        }
+
         protected void houseType_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (houseType.SelectedItem.Value)
             {
-                case "C":
+                case "1":
                     fieldSlum.Visible = true;
                     fieldBuilding.Visible = false;
                     break;
 
-                case "AP":
+                case "2":
                     fieldBuilding.Visible = true;
                     fieldSlum.Visible = false;
                     break;
@@ -137,6 +148,30 @@ namespace hospital_solution
                     Console.WriteLine("No llego el dato documento");
                     break;
             }
+        }
+
+        protected void districtChoice_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string query = "select * from hospital.corregimiento where iddistrito = @district";
+            wsClientImpl.loadDropDownList(dropDownList: townshipChoice, query, "idcorregimiento", "descripcion", districtChoice.SelectedItem.Value);
+            fieldTownShip.Visible = true;
+        }
+
+        protected void savePatient_Click(object sender, EventArgs e)
+        {
+            PatientDTO patient = new PatientDTO();
+
+            patient.name = inputName.Text;
+            patient.documentType = null != inputId ? inputId.Text : inputPassport.Text;
+            patient.sex = sexType.SelectedItem.Value;
+            patient.bloodType = bloodType.SelectedItem.Value;
+            patient.email = inputEmail.Text;
+            patient.telephone = inputPhone.Text;
+            patient.country = countryChoice.SelectedItem.Value;
+            patient.district = districtChoice.SelectedItem.Value;
+            patient.township = townshipChoice.SelectedItem.Value;
+            patient.housingType = houseType.SelectedItem.Value;
+
         }
     }
 }
