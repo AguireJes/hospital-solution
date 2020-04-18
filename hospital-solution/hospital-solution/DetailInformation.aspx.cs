@@ -7,14 +7,7 @@ namespace hospital_solution
     {
         WsclientImpl wsClientImpl = new WsclientImpl();
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (!IsPostBack)
-            {
-                LoadCatalogs();
-            }
-        }
-
+        //Private methods
         private void LoadCatalogs()
         {
             LoadSexCatalog();
@@ -59,6 +52,15 @@ namespace hospital_solution
         {
             string query = "select * from hospital.sintomas";
             wsClientImpl.loadListBox(listBox: symptoms, query, "idsintomas", "descripcion");
+        }
+
+        //Protected methods
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                LoadCatalogs();
+            }
         }
 
         protected void houseType_SelectedIndexChanged(object sender, EventArgs e)
