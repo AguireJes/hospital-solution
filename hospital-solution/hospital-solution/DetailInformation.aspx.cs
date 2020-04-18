@@ -1,6 +1,7 @@
 ﻿using hospital_solution.Interfaces.Command.Service;
 using hospital_solution.Model;
 using System;
+using System.Web;
 
 namespace hospital_solution
 {
@@ -193,11 +194,11 @@ namespace hospital_solution
                 {
                     SaveTravelCountrys(patient.id, chooseTravelCountry.Items[i].Value);
                 }
-                    
             }
 
             if (redirectToContact)
             {
+                HttpContext.Current.Session["idPatient"] = patient.id;
                 //Redirige a contacto
             } else
             {
