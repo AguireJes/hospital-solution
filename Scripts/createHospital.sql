@@ -175,9 +175,8 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `hospital`.`relacionpaciente` ;
 
 CREATE TABLE IF NOT EXISTS `hospital`.`relacionpaciente` (
-  `pacientes_idpacientes` INT NOT NULL,
-  `sintomas_idsintomas` INT NULL,
-  PRIMARY KEY (`pacientes_idpacientes`))
+  `pacientes_idpacientes` INT NULL,
+  `sintomas_idsintomas` INT NULL)
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
@@ -186,10 +185,10 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `hospital`.`viajes` ;
 
 CREATE TABLE IF NOT EXISTS `hospital`.`viajes` (
-  `pacientes_idpacientes` INT NOT NULL,
-  `paises_idpaises` INT NULL,
-  PRIMARY KEY (`pacientes_idpacientes`))
+  `pacientes_idpacientes` INT NULL,
+  `paises_idpaises` INT NULL)
 ENGINE = InnoDB;
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
