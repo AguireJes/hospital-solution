@@ -3,6 +3,7 @@ using hospital_solution.Interfaces.Command.Api;
 using hospital_solution.Model;
 using MySql.Data.MySqlClient;
 using System;
+using System.Data;
 using System.Web.UI.WebControls;
 
 namespace hospital_solution.Interfaces.Command.Service
@@ -11,7 +12,7 @@ namespace hospital_solution.Interfaces.Command.Service
     {
         ConnectionImpl connection = new ConnectionImpl();
 
-        public bool signIn(string user, string pass)
+        public bool SignIn(string user, string pass)
         {
             Boolean response = false;
             try
@@ -42,7 +43,7 @@ namespace hospital_solution.Interfaces.Command.Service
             return response;
         }
 
-        public void loadDropDownList(DropDownList dropDownList, string querySentence, string valueField, string textField)
+        public void LoadDropDownList(DropDownList dropDownList, string querySentence, string valueField, string textField)
         {
             try
             {
@@ -65,7 +66,7 @@ namespace hospital_solution.Interfaces.Command.Service
             }
         }
 
-        public void loadDropDownList(DropDownList dropDownList, string querySentence, string valueField, string textField, string district)
+        public void LoadDropDownList(DropDownList dropDownList, string querySentence, string valueField, string textField, string district)
         {
             try
             {
@@ -88,7 +89,7 @@ namespace hospital_solution.Interfaces.Command.Service
             }
         }
 
-        public void loadListBox(ListBox listBox, string querySentence, string valueField, string textField)
+        public void LoadListBox(ListBox listBox, string querySentence, string valueField, string textField)
         {
             try
             {
@@ -111,7 +112,7 @@ namespace hospital_solution.Interfaces.Command.Service
             }
         }
 
-        public void savePatient(PatientDTO patient)
+        public void SavePatient(PatientDTO patient)
         {
             try
             {
@@ -150,7 +151,7 @@ namespace hospital_solution.Interfaces.Command.Service
             }
         }
 
-        public void saveSymptoms(int idPatient, string idSymptom)
+        public void SaveSymptoms(int idPatient, string idSymptom)
         {
             try
             {
@@ -172,7 +173,7 @@ namespace hospital_solution.Interfaces.Command.Service
             }
         }
 
-        public void saveTravelCountries(int idPatient, string idCountry)
+        public void SaveTravelCountries(int idPatient, string idCountry)
         {
             try
             {
@@ -197,6 +198,34 @@ namespace hospital_solution.Interfaces.Command.Service
         private static void showMessage(string v, string message)
         {
             throw new NotImplementedException(message);
+        }
+
+        public void LoadTownshipChart()
+        {
+            try
+            {
+
+                MySqlConnection connectionBd = connection.getConnection();
+
+                string query = "";
+
+                MySqlCommand cmd;
+                cmd = new MySqlCommand(query, connectionBd);
+                cmd.ExecuteNonQuery();
+
+                DataTable tb = new DataTable();
+
+                connectionBd.Close();
+            }
+            catch (Exception exc)
+            {
+                showMessage("Error Message", exc.Message);
+            }
+        }
+
+        public void LaveTravelCountries(int idPatient, string idCountry)
+        {
+            throw new NotImplementedException();
         }
     }
 }

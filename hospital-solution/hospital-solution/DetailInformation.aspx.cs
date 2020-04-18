@@ -25,53 +25,53 @@ namespace hospital_solution
         private void LoadSexCatalog()
         {
             string query = "select * from hospital.sexo";
-            wsClientImpl.loadDropDownList(dropDownList: sexType, query, "valor", "descripcion");
+            wsClientImpl.LoadDropDownList(dropDownList: sexType, query, "valor", "descripcion");
         }
 
         private void LoadBloodCatalog()
         {
             string query = "select * from hospital.tiposangre";
-            wsClientImpl.loadDropDownList(dropDownList: bloodType, query, "idtiposangre", "sangre");
+            wsClientImpl.LoadDropDownList(dropDownList: bloodType, query, "idtiposangre", "sangre");
         }
 
         private void LoadCountryCatalog()
         {
             string query = "select * from hospital.paises";
-            wsClientImpl.loadDropDownList(dropDownList: countryChoice, query, "idpaises", "pais");
+            wsClientImpl.LoadDropDownList(dropDownList: countryChoice, query, "idpaises", "pais");
         }
 
         private void LoadDistrictCatalog()
         {
             string query = "select * from hospital.distrito";
-            wsClientImpl.loadDropDownList(dropDownList: districtChoice, query, "iddistrito", "descripcion");
+            wsClientImpl.LoadDropDownList(dropDownList: districtChoice, query, "iddistrito", "descripcion");
         }
 
         private void LoadCountryRiskCatalog()
         {
             string query = "select * from  hospital.paises where riesgo = 'S'";
-            wsClientImpl.loadListBox(listBox: chooseTravelCountry, query, "idpaises", "pais");
+            wsClientImpl.LoadListBox(listBox: chooseTravelCountry, query, "idpaises", "pais");
         }
 
         private void LoadSymptomCatalog()
         {
             string query = "select * from hospital.sintomas";
-            wsClientImpl.loadListBox(listBox: symptoms, query, "idsintomas", "descripcion");
+            wsClientImpl.LoadListBox(listBox: symptoms, query, "idsintomas", "descripcion");
         }
 
         private void LoadHouseTypeCatalog()
         {
             string query = "select * from hospital.tipovivienda";
-            wsClientImpl.loadDropDownList(dropDownList: houseType, query, "idtipovivienda", "descripcion");
+            wsClientImpl.LoadDropDownList(dropDownList: houseType, query, "idtipovivienda", "descripcion");
         }
 
         private void SaveSymptoms(int idPatient, string idSymptom)
         {
-            wsClientImpl.saveSymptoms(idPatient, idSymptom);
+            wsClientImpl.SaveSymptoms(idPatient, idSymptom);
         }
 
         private void SaveTravelCountrys(int idPatient, string idCountry)
         {
-            wsClientImpl.saveTravelCountries(idPatient, idCountry);
+            wsClientImpl.SaveTravelCountries(idPatient, idCountry);
         }
 
         //Protected methods
@@ -144,7 +144,7 @@ namespace hospital_solution
         protected void districtChoice_SelectedIndexChanged(object sender, EventArgs e)
         {
             string query = "select * from hospital.corregimiento where iddistrito = @district";
-            wsClientImpl.loadDropDownList(dropDownList: townshipChoice, query, "idcorregimiento", "descripcion", districtChoice.SelectedItem.Value);
+            wsClientImpl.LoadDropDownList(dropDownList: townshipChoice, query, "idcorregimiento", "descripcion", districtChoice.SelectedItem.Value);
             fieldTownShip.Visible = true;
         }
 
@@ -178,7 +178,7 @@ namespace hospital_solution
 
             redirectToContact = patient.personQuantity > 0  ? true : false;
 
-            wsClientImpl.savePatient(patient);
+            wsClientImpl.SavePatient(patient);
 
             if (patient.symptomatic == "S")
             {
