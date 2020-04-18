@@ -1,4 +1,5 @@
 ﻿using hospital_solution.Interfaces.Command.Service;
+using hospital_solution.Model;
 using System;
 
 namespace hospital_solution
@@ -16,6 +17,7 @@ namespace hospital_solution
             LoadDistrictCatalog();
             LoadCountryRiskCatalog();
             LoadSymptomCatalog();
+            LoadHouseTypeCatalog();
         }
 
         private void LoadSexCatalog()
@@ -54,6 +56,12 @@ namespace hospital_solution
             wsClientImpl.loadListBox(listBox: symptoms, query, "idsintomas", "descripcion");
         }
 
+        private void LoadHouseTypeCatalog()
+        {
+            string query = "select * from hospital.tipovivienda";
+            wsClientImpl.loadDropDownList(dropDownList: houseType, query, "idtipovivienda", "descripcion");
+        }
+
 
         //Protected methods
         protected void Page_Load(object sender, EventArgs e)
@@ -68,12 +76,12 @@ namespace hospital_solution
         {
             switch (houseType.SelectedItem.Value)
             {
-                case "C":
+                case "1":
                     fieldSlum.Visible = true;
                     fieldBuilding.Visible = false;
                     break;
 
-                case "AP":
+                case "2":
                     fieldBuilding.Visible = true;
                     fieldSlum.Visible = false;
                     break;
@@ -144,9 +152,26 @@ namespace hospital_solution
 
         protected void districtChoice_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string query = "select * from hospital.corregimiento where distrito = @district";
-            wsClientImpl.loadDropDownList(dropDownList: townshipChoice, query, "iddistrito", "descripcion", districtChoice.SelectedValue);
+            string query = "select * from hospital.corregimiento where iddistrito = @district";
+            wsClientImpl.loadDropDownList(dropDownList: townshipChoice, query, "idcorregimiento", "descripcion", districtChoice.SelectedItem.Value);
             fieldTownShip.Visible = true;
+        }
+
+        protected void savePatient_Click(object sender, EventArgs e)
+        {
+            PatientDTO patient = new PatientDTO();
+
+            patient.name = inputName.Text;
+            patient.documentType = null != inputId ? inputId.Text : inputPassport.Text;
+            patient.sex = sexType.SelectedItem.Value;
+            patient.bloodType = bloodType.SelectedItem.Value;
+            patient.email = inputEmail.Text;
+            patient.telephone = inputPhone.Text;
+            patient.country = countryChoice.SelectedItem.Value;
+            patient.district = districtChoice.SelectedItem.Value;
+            patient.township = townshipChoice.SelectedItem.Value;
+            patient.housingType = houseType.SelectedItem.Value;
+
         }
     }
 }

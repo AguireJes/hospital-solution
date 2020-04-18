@@ -82,17 +82,17 @@
         <div class="form-group col-md-4">
             <label class="font-weight-bold">Distrito</label>
             <div class="form-check form-check-inline">
-                <asp:DropDownList ID="districtChoice" runat="server" CssClass="form-control" OnSelectedIndexChanged="districtChoice_SelectedIndexChanged">
+                <asp:DropDownList ID="districtChoice" runat="server" CssClass="form-control" OnSelectedIndexChanged="districtChoice_SelectedIndexChanged" AutoPostBack="true">
                 </asp:DropDownList>
                 <asp:RequiredFieldValidator ID="districtChoiceRequired" runat="server" ControlToValidate="districtChoice"
                     ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
             </div>
         </div>
-        <asp:Panel ID="fieldTownShip" runat="server" Visible="false" CssClass="form-group col-md-4">
+        <asp:Panel ID="fieldTownShip" runat="server" Visible="false">
         <div class="form-group col-md-4">
             <label class="font-weight-bold">Corregimiento</label>
             <div class="form-check form-check-inline">
-                <asp:DropDownList ID="townshipChoice" runat="server" CssClass="form-control">
+                <asp:DropDownList ID="townshipChoice" runat="server" CssClass="form-control document">
                 </asp:DropDownList>
                 <asp:RequiredFieldValidator ID="townshipChoiceRequired" runat="server" ControlToValidate="townshipChoice"
                     ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
@@ -106,9 +106,6 @@
             <label class="font-weight-bold">Seleccione tipo de vivienda</label>
             <div class="form-check form-check-inline">
                 <asp:DropDownList ID="houseType" runat="server" AutoPostBack="true" OnSelectedIndexChanged="houseType_SelectedIndexChanged" CssClass="form-control">
-                    <asp:ListItem Text="Seleccionar" Value="Seleccionar" />
-                    <asp:ListItem Text="Casa" Value="C" />
-                    <asp:ListItem Text="Apartamento" Value="AP" />
                 </asp:DropDownList>
                 <asp:RequiredFieldValidator ID="houseTypeRequired" runat="server" ControlToValidate="houseType"
                     ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
@@ -123,12 +120,7 @@
         <asp:Panel ID="fieldSlum" runat="server" Visible="false">
             <div class="form-group col-md-3">
                 <label class="font-weight-bold">Barriada</label>
-                <div class="form-check form-check-inline">
-                    <asp:DropDownList ID="slumChoice" runat="server" CssClass="form-control">
-                    </asp:DropDownList>
-                    <asp:RequiredFieldValidator ID="slumChoiceRequired" runat="server" ControlToValidate="slumChoice"
-                        ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
-                </div>
+                <asp:TextBox ID="inputSlum" runat="server" type="text" class="form-control input-id" required="true"> </asp:TextBox>
             </div>
         </asp:Panel>
         <div class="form-group col-md-3">
@@ -204,6 +196,6 @@
     </div>
     <br />
     <div class="row">
-        <asp:Button ID="savePatient" runat="server" Text="Guardar" CssClass="btn btn-lg btn-block btn btn-dark btn-save" type="submit" ValidationGroup="savePatient" />
+        <asp:Button ID="savePatient" runat="server" Text="Guardar" CssClass="btn btn-lg btn-block btn btn-dark btn-save" type="submit" ValidationGroup="savePatient"  OnClick="savePatient_Click"/>
     </div>
 </asp:Content>
