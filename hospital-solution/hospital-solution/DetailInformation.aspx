@@ -1,8 +1,8 @@
-﻿<%@ Page Title="Detalle" Async="true" Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="DetailInformation.aspx.cs" Inherits="hospital_solution.DetailInformation"%>
+﻿<%@ Page Title="Detalle" Async="true" Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="DetailInformation.aspx.cs" Inherits="hospital_solution.DetailInformation" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container" id="personalDataSection">
-        <h2>Formulario de datos covid-19</h2>
+        <h2>Formulario de datos COVID-19</h2>
         <div class="form-row">
             <div class="form-group col-md-3">
                 <label class="font-weight-bold">Nombre</label>
@@ -58,13 +58,9 @@
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group">
-                <label for="filePhoto">Seleccione foto</label>
-                <input type="file" class="form-control-file" id="filePhoto" required>
-            </div>
             <div class="form-group col-md-4">
                 <label class="font-weight-bold">Email</label>
-                <asp:TextBox ID="inputEmail" runat="server" type="text" class="form-control" required="true"> </asp:TextBox>
+                <asp:TextBox ID="inputEmail" runat="server" type="text" class="form-control"> </asp:TextBox>
             </div>
             <div class="form-group col-md-4">
                 <label class="font-weight-bold">País de nacimiento</label>
@@ -89,40 +85,32 @@
             </div>
         </div>
         <asp:Panel ID="fieldTownShip" runat="server" Visible="false">
-        <div class="form-group col-md-4">
-            <label class="font-weight-bold">Corregimiento</label>
-            <div class="form-check form-check-inline">
-                <asp:DropDownList ID="townshipChoice" runat="server" CssClass="form-control document">
-                </asp:DropDownList>
-                <asp:RequiredFieldValidator ID="townshipChoiceRequired" runat="server" ControlToValidate="townshipChoice"
-                    ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
+            <div class="form-group col-md-4">
+                <label class="font-weight-bold">Corregimiento</label>
+                <div class="form-check form-check-inline">
+                    <asp:DropDownList ID="townshipChoice" runat="server" CssClass="form-control document">
+                    </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="townshipChoiceRequired" runat="server" ControlToValidate="townshipChoice"
+                        ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
+                </div>
             </div>
-        </div>
-            </asp:Panel>
+        </asp:Panel>
     </div>
     <br />
     <div class="form-row">
         <div class="form-group col-md-3">
             <label class="font-weight-bold">Seleccione tipo de vivienda</label>
             <div class="form-check form-check-inline">
-                <asp:DropDownList ID="houseType" runat="server" AutoPostBack="true" OnSelectedIndexChanged="houseType_SelectedIndexChanged" CssClass="form-control">
+                <asp:DropDownList ID="houseType" runat="server" CssClass="form-control">
                 </asp:DropDownList>
                 <asp:RequiredFieldValidator ID="houseTypeRequired" runat="server" ControlToValidate="houseType"
                     ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
             </div>
         </div>
-        <asp:Panel ID="fieldBuilding" runat="server" Visible="false">
-            <div class="form-group col-md-3">
-                <label class="font-weight-bold">Edificio</label>
-                <asp:TextBox ID="buildingInput" runat="server" type="text" class="form-control input-id" required="true"> </asp:TextBox>
-            </div>
-        </asp:Panel>
-        <asp:Panel ID="fieldSlum" runat="server" Visible="false">
-            <div class="form-group col-md-3">
-                <label class="font-weight-bold">Barriada</label>
-                <asp:TextBox ID="inputSlum" runat="server" type="text" class="form-control input-id" required="true"> </asp:TextBox>
-            </div>
-        </asp:Panel>
+        <div class="form-group col-md-3">
+            <label class="font-weight-bold">Residencia</label>
+            <asp:TextBox ID="houseInput" runat="server" type="text" class="form-control input-id" required="true"> </asp:TextBox>
+        </div>
         <div class="form-group col-md-3">
             <label class="font-weight-bold">Número de casa o apartamento</label>
             <asp:TextBox ID="numberHouseOrAp" runat="server" type="text" class="form-control input-id" required="true"> </asp:TextBox>
@@ -177,7 +165,11 @@
     </div>
     <br />
     <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4">
+            <label for="filePhoto">Seleccione foto</label>
+            <asp:FileUpload ID="imageFile" runat="server" Width="210px" CssClass="form-control" />
+        </div>
+        <div class="form-group col-md-4">
             <label class="font-weight-bold">¿Mantuvo contacto con una persona con problemas respiratorios?</label>
             <div class="form-check form-check-inline">
                 <asp:DropDownList ID="chooseContact" runat="server" CssClass="form-control">
@@ -189,13 +181,13 @@
                     ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
             </div>
         </div>
-        <div class="form-group col-md-6">
-            <label class="font-weight-bold">Cantidad de personas</label>
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold">Cantidad de personas con quien vive</label>
             <asp:TextBox ID="quantityPersons" runat="server" type="text" class="form-control" Width="90px"> </asp:TextBox>
         </div>
     </div>
     <br />
     <div class="row">
-        <asp:Button ID="savePatient" runat="server" Text="Guardar" CssClass="btn btn-lg btn-block btn btn-dark btn-save" type="submit" ValidationGroup="savePatient"  OnClick="savePatient_Click"/>
+        <asp:Button ID="savePatient" runat="server" Text="Guardar" CssClass="btn btn-lg btn-block btn btn-dark btn-save" type="submit" ValidationGroup="savePatient" OnClick="savePatient_Click" />
     </div>
 </asp:Content>

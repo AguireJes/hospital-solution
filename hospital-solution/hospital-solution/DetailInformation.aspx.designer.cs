@@ -213,40 +213,13 @@ namespace hospital_solution
         protected global::System.Web.UI.WebControls.RequiredFieldValidator houseTypeRequired;
 
         /// <summary>
-        /// Control fieldBuilding.
+        /// Control houseInput.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel fieldBuilding;
-
-        /// <summary>
-        /// Control buildingInput.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox buildingInput;
-
-        /// <summary>
-        /// Control fieldSlum.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel fieldSlum;
-
-        /// <summary>
-        /// Control inputSlum.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox inputSlum;
+        protected global::System.Web.UI.WebControls.TextBox houseInput;
 
         /// <summary>
         /// Control numberHouseOrAp.
@@ -346,6 +319,15 @@ namespace hospital_solution
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator chooseTravelCountryRequired;
+
+        /// <summary>
+        /// Control imageFile.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload imageFile;
 
         /// <summary>
         /// Control chooseContact.

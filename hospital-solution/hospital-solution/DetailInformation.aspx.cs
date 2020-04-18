@@ -1,6 +1,8 @@
 ﻿using hospital_solution.Interfaces.Command.Service;
 using hospital_solution.Model;
 using System;
+using System.IO;
+using System.Web;
 
 namespace hospital_solution
 {
@@ -62,6 +64,15 @@ namespace hospital_solution
             wsClientImpl.loadDropDownList(dropDownList: houseType, query, "idtipovivienda", "descripcion");
         }
 
+        private void SaveSymptoms(int idPatient, string idSymptom)
+        {
+            wsClientImpl.saveSymptoms(idPatient, idSymptom);
+        }
+
+        private void SaveTravelCountrys(int idPatient, string idCountry)
+        {
+            wsClientImpl.saveTravelCountries(idPatient, idCountry);
+        }
 
         //Protected methods
         protected void Page_Load(object sender, EventArgs e)
@@ -69,26 +80,6 @@ namespace hospital_solution
             if (!IsPostBack)
             {
                 LoadCatalogs();
-            }
-        }
-
-        protected void houseType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (houseType.SelectedItem.Value)
-            {
-                case "1":
-                    fieldSlum.Visible = true;
-                    fieldBuilding.Visible = false;
-                    break;
-
-                case "2":
-                    fieldBuilding.Visible = true;
-                    fieldSlum.Visible = false;
-                    break;
-
-                default:
-                    Console.WriteLine("No llego el dato tipo de vivienda");
-                    break;
             }
         }
 
@@ -160,9 +151,16 @@ namespace hospital_solution
         protected void savePatient_Click(object sender, EventArgs e)
         {
             PatientDTO patient = new PatientDTO();
+            Boolean redirectToContact = false;
+            Random rnd = new Random();
+            int idpatient = rnd.Next(1000);
 
+            patient.id = idpatient;
             patient.name = inputName.Text;
-            patient.documentType = null != inputId ? inputId.Text : inputPassport.Text;
+            patient.image = Path.GetFileName(imageFile.PostedFile.FileName);
+            imageFile.PostedFile.SaveAs(Server.MapPath("~/images/") + imageFile.PostedFile.FileName);
+            patient.documentType = documentType.SelectedItem.Value;
+            patient.document = null != inputId ? inputId.Text : inputPassport.Text;
             patient.sex = sexType.SelectedItem.Value;
             patient.bloodType = bloodType.SelectedItem.Value;
             patient.email = inputEmail.Text;
@@ -171,7 +169,43 @@ namespace hospital_solution
             patient.district = districtChoice.SelectedItem.Value;
             patient.township = townshipChoice.SelectedItem.Value;
             patient.housingType = houseType.SelectedItem.Value;
+            patient.houseResidence = houseInput.Text;
+            patient.idHouse = numberHouseOrAp.Text;
+            patient.symptomatic = haveSymptops.SelectedValue;
+            patient.travelCountry = travelCountry.SelectedValue;
+            patient.personContact = chooseContact.SelectedValue;
+            patient.personQuantity = !string.IsNullOrEmpty(quantityPersons.Text) ? Convert.ToInt32(quantityPersons.Text) : 0;
 
+            redirectToContact = patient.personQuantity > 0  ? true : false;
+
+            wsClientImpl.savePatient(patient);
+
+            if (patient.symptomatic == "S")
+            {
+                symptoms.Items.RemoveAt(0);
+                for (int i = 0; i < symptoms.Items.Count; i++)
+                {
+                    SaveSymptoms(patient.id, symptoms.Items[i].Value);
+                }
+            }
+
+            if(patient.travelCountry == "S")
+            {
+                chooseTravelCountry.Items.RemoveAt(0);
+                for (int i = 0; i < chooseTravelCountry.Items.Count; i++)
+                {
+                    SaveTravelCountrys(patient.id, chooseTravelCountry.Items[i].Value);
+                }
+            }
+
+            if (redirectToContact)
+            {
+                HttpContext.Current.Session["idPatient"] = patient.id;
+                //Redirige a contacto
+            } else
+            {
+                //Redirige a dashboard
+            }
         }
     }
 }
