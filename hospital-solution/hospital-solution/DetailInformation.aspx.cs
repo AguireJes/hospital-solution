@@ -201,10 +201,10 @@ namespace hospital_solution
             if (redirectToContact)
             {
                 HttpContext.Current.Session["idPatient"] = patient.id;
-                //Redirige a contacto
+                Response.Redirect("~/RelationPatient.aspx");
             } else
             {
-                //Redirige a dashboard
+                Response.Redirect("~/Dashboard.aspx");
             }
         }
     }

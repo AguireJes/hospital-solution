@@ -49,7 +49,7 @@ namespace hospital_solution
 
         protected void fowardForm_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("~/DetailInformation.aspx");
         }
     }
 }

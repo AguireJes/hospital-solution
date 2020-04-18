@@ -55,7 +55,7 @@
                 <asp:Button ID="saveContact" runat="server" Text="Guardar" CssClass="btn btn-lg btn-block btn btn-dark btn-save" type="submit" ValidationGroup="saveContact" OnClick="saveContact_Click" />
             </div>
             <div class="form-group col-md-4">
-                <asp:Button ID="fowardForm" runat="server" Text="Regresar a formulario" CssClass="btn btn-lg btn-block btn btn-dark btn-save" type="submit" ValidationGroup="saveContact" OnClick="fowardForm_Click" />
+                <asp:Button ID="fowardForm" runat="server" Text="Regresar a formulario" CssClass="btn btn-lg btn-block btn btn-dark btn-save"  OnClick="fowardForm_Click"/>
             </div>
         </div>
     </div>
