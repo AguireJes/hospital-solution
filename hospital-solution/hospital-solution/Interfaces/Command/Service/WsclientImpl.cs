@@ -150,6 +150,50 @@ namespace hospital_solution.Interfaces.Command.Service
             }
         }
 
+        public void saveSymptoms(int idPatient, string idSymptom)
+        {
+            try
+            {
+
+                MySqlConnection connectionBd = connection.getConnection();
+
+                string query = "INSERT INTO hospital.relacionpaciente (pacientes_idpacientes, sintomas_idsintomas) VALUES (@idPatient, @idSymptom)";
+
+                MySqlCommand cmd;
+                cmd = new MySqlCommand(query, connectionBd);
+                cmd.Parameters.AddWithValue("@idPatient", idPatient);
+                cmd.Parameters.AddWithValue("@idSymptom", idSymptom);
+                cmd.ExecuteNonQuery();
+                connectionBd.Close();
+            }
+            catch (Exception exc)
+            {
+                showMessage("Error Message", exc.Message);
+            }
+        }
+
+        public void saveTravelCountries(int idPatient, string idCountry)
+        {
+            try
+            {
+
+                MySqlConnection connectionBd = connection.getConnection();
+
+                string query = "INSERT INTO hospital.viajes (pacientes_idpacientes, paises_idpaises) VALUES (@idPatient, @idCountry)";
+
+                MySqlCommand cmd;
+                cmd = new MySqlCommand(query, connectionBd);
+                cmd.Parameters.AddWithValue("@idPatient", idPatient);
+                cmd.Parameters.AddWithValue("@idCountry", idCountry);
+                cmd.ExecuteNonQuery();
+                connectionBd.Close();
+            }
+            catch (Exception exc)
+            {
+                showMessage("Error Message", exc.Message);
+            }
+        }
+
         private static void showMessage(string v, string message)
         {
             throw new NotImplementedException(message);

@@ -62,6 +62,16 @@ namespace hospital_solution
             wsClientImpl.loadDropDownList(dropDownList: houseType, query, "idtipovivienda", "descripcion");
         }
 
+        private void SaveSymptoms(int idPatient, string idSymptom)
+        {
+            wsClientImpl.saveSymptoms(idPatient, idSymptom);
+        }
+
+        private void SaveTravelCountrys(int idPatient, string idCountry)
+        {
+            wsClientImpl.saveTravelCountries(idPatient, idCountry);
+        }
+
         //Protected methods
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -166,6 +176,25 @@ namespace hospital_solution
             redirectToContact = patient.personQuantity > 0  ? true : false;
 
             wsClientImpl.savePatient(patient);
+
+            if (patient.symptomatic == "S")
+            {
+                symptoms.Items.RemoveAt(0);
+                for (int i = 0; i < symptoms.Items.Count; i++)
+                {
+                    SaveSymptoms(patient.id, symptoms.Items[i].Value);
+                }
+            }
+
+            if(patient.travelCountry == "S")
+            {
+                chooseTravelCountry.Items.RemoveAt(0);
+                for (int i = 0; i < chooseTravelCountry.Items.Count; i++)
+                {
+                    SaveTravelCountrys(patient.id, chooseTravelCountry.Items[i].Value);
+                }
+                    
+            }
 
             if (redirectToContact)
             {
