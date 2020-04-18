@@ -6,6 +6,9 @@
         <div class="row">
              <asp:Literal ID="ltChart" runat="server"></asp:Literal>
         </div>
+         <div class="row">
+             <asp:Literal ID="ltChartsex" runat="server"></asp:Literal>
+        </div>
     </div>
 </asp:Content>
 

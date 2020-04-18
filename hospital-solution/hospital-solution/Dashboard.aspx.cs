@@ -15,6 +15,8 @@ namespace hospital_solution
         protected void Page_Load(object sender, EventArgs e)
         {
             wsClientImpl.LoadTownshipChart(ltChart);
+            wsClientImpl.LoadSexChart(ltChartsex);
         }
+
     }
 }

@@ -26,6 +26,8 @@ namespace hospital_solution.Interfaces.Command.Api
 
         void LoadTownshipChart(Literal chartResponse);
 
+        void LoadSexChart(Literal chartResponse);
+
         void SaveContacts(ContactDTO contact, string idHouse);
     }
 }
