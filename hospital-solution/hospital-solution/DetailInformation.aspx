@@ -58,13 +58,9 @@
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group">
-                <label for="filePhoto">Seleccione foto</label>
-                <input type="file" class="form-control-file" id="filePhoto" required>
-            </div>
             <div class="form-group col-md-4">
                 <label class="font-weight-bold">Email</label>
-                <asp:TextBox ID="inputEmail" runat="server" type="text" class="form-control" required="true"> </asp:TextBox>
+                <asp:TextBox ID="inputEmail" runat="server" type="text" class="form-control"> </asp:TextBox>
             </div>
             <div class="form-group col-md-4">
                 <label class="font-weight-bold">País de nacimiento</label>
@@ -105,24 +101,16 @@
         <div class="form-group col-md-3">
             <label class="font-weight-bold">Seleccione tipo de vivienda</label>
             <div class="form-check form-check-inline">
-                <asp:DropDownList ID="houseType" runat="server" AutoPostBack="true" OnSelectedIndexChanged="houseType_SelectedIndexChanged" CssClass="form-control">
+                <asp:DropDownList ID="houseType" runat="server" CssClass="form-control">
                 </asp:DropDownList>
                 <asp:RequiredFieldValidator ID="houseTypeRequired" runat="server" ControlToValidate="houseType"
                     ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
             </div>
         </div>
-        <asp:Panel ID="fieldBuilding" runat="server" Visible="false">
             <div class="form-group col-md-3">
-                <label class="font-weight-bold">Edificio</label>
-                <asp:TextBox ID="buildingInput" runat="server" type="text" class="form-control input-id" required="true"> </asp:TextBox>
-            </div>
-        </asp:Panel>
-        <asp:Panel ID="fieldSlum" runat="server" Visible="false">
-            <div class="form-group col-md-3">
-                <label class="font-weight-bold">Barriada</label>
-                <asp:TextBox ID="inputSlum" runat="server" type="text" class="form-control input-id" required="true"> </asp:TextBox>
-            </div>
-        </asp:Panel>
+                <label class="font-weight-bold">Residencia</label>
+                <asp:TextBox ID="houseInput" runat="server" type="text" class="form-control input-id" required="true"> </asp:TextBox>
+                </div>
         <div class="form-group col-md-3">
             <label class="font-weight-bold">Número de casa o apartamento</label>
             <asp:TextBox ID="numberHouseOrAp" runat="server" type="text" class="form-control input-id" required="true"> </asp:TextBox>
