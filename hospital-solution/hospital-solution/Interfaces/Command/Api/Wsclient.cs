@@ -24,7 +24,7 @@ namespace hospital_solution.Interfaces.Command.Api
 
         void SaveTravelCountries(int idPatient, string idCountry);
 
-        void LoadTownshipChart();
+        void LoadTownshipChart(Literal chartResponse);
 
         void SaveContacts(ContactDTO contact, string idHouse);
     }

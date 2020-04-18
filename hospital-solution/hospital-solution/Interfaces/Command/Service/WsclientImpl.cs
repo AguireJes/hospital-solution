@@ -3,7 +3,9 @@ using hospital_solution.Interfaces.Command.Api;
 using hospital_solution.Model;
 using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Text;
 using System.Web.UI.WebControls;
 
 namespace hospital_solution.Interfaces.Command.Service
@@ -195,29 +197,6 @@ namespace hospital_solution.Interfaces.Command.Service
             }
         }
 
-        public void LoadTownshipChart()
-        {
-            try
-            {
-
-                MySqlConnection connectionBd = connection.getConnection();
-
-                string query = "";
-
-                MySqlCommand cmd;
-                cmd = new MySqlCommand(query, connectionBd);
-                cmd.ExecuteNonQuery();
-
-                DataTable tb = new DataTable();
-
-                connectionBd.Close();
-            }
-            catch (Exception exc)
-            {
-                showMessage("Error Message", exc.Message);
-            }
-        }
-
         public void SaveContacts(ContactDTO contact, string idHouse)
         {
             try
@@ -248,6 +227,55 @@ namespace hospital_solution.Interfaces.Command.Service
         private static void showMessage(string v, string message)
         {
             throw new NotImplementedException(message);
+        }
+
+        public void LoadTownshipChart(Literal chartResponse)
+        {
+            try
+            {
+                MySqlConnection connectionBd = connection.getConnection();
+                DataTable tb = new DataTable();
+                string query = "select cor.descripcion,count(idpacientes) from hospital.pacientes as pac, hospital.corregimiento as cor where pac.idcorregimiento = cor.idcorregimiento group by cor.descripcion";
+
+                MySqlCommand cmd;
+                cmd = new MySqlCommand(query, connectionBd);
+                MySqlDataReader dr = cmd.ExecuteReader();
+                tb.Load(dr, LoadOption.OverwriteChanges);
+                connectionBd.Close();
+
+                if (tb != null)
+                {
+                    String chart = "";
+                    chart = "<canvas id=\"line-chart\" width=\"100%\" height=\"40\"></canvas>";
+                    chart += "<script>";
+                    chart += "new Chart(document.getElementById(\"line-chart\"), { type: 'line', data: {labels: [";
+
+                    // Labels
+                    for (int i = 0; i < 2; i++)
+                        chart += i.ToString() + ",";
+                    chart = chart.Substring(0, chart.Length - 1);
+
+                    chart += "],datasets: [{ data: [";
+
+                    // get data from database and add to chart
+                    String value = "";
+                    for (int i = 0; i < tb.Rows.Count; i++)
+                        value += tb.Rows[i]["count(idpacientes)"].ToString();
+                    value = value.Substring(0, value.Length - 1);
+                    chart += value;
+
+                    chart += "],label: \"Corregimientos\",borderColor: \"#97abb1\",fill: true}"; // Chart color
+                    chart += "]},options: { title: { display: true,text: 'Corregimientos'} }"; // Chart title
+                    chart += "});";
+                    chart += "</script>";
+
+                    chartResponse.Text = chart;
+                }
+            }
+            catch (Exception exc)
+            {
+                showMessage("Error Message", exc.Message);
+            }
         }
     }
 }
