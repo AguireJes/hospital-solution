@@ -3,7 +3,6 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container" id="personalDataSection">
         <h2>Datos personales</h2>
-        <form>
             <div class="form-row">
                 <div class="form-group col-md-3">
                     <label class="font-weight-bold">Nombre</label>
@@ -77,7 +76,6 @@
                     </div>
                 </div>
             </div>
-        </form>
     </div>
     <br />
     <div class="form-row">
