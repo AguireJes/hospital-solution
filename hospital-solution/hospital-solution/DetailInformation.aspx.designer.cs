@@ -321,6 +321,15 @@ namespace hospital_solution
         protected global::System.Web.UI.WebControls.RequiredFieldValidator chooseTravelCountryRequired;
 
         /// <summary>
+        /// Control imageFile.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload imageFile;
+
+        /// <summary>
         /// Control chooseContact.
         /// </summary>
         /// <remarks>

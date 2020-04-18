@@ -1,6 +1,7 @@
 ﻿using hospital_solution.Interfaces.Command.Service;
 using hospital_solution.Model;
 using System;
+using System.IO;
 using System.Web;
 
 namespace hospital_solution
@@ -156,7 +157,8 @@ namespace hospital_solution
 
             patient.id = idpatient;
             patient.name = inputName.Text;
-            patient.image = null;
+            patient.image = Path.GetFileName(imageFile.PostedFile.FileName);
+            imageFile.PostedFile.SaveAs(Server.MapPath("~/images/") + imageFile.PostedFile.FileName);
             patient.documentType = documentType.SelectedItem.Value;
             patient.document = null != inputId ? inputId.Text : inputPassport.Text;
             patient.sex = sexType.SelectedItem.Value;
