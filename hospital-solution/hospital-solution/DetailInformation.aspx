@@ -79,6 +79,7 @@
             </div>
         </form>
     </div>
+    <br />
     <div class="form-row">
         <div class="form-group col-md-4">
             <label class="font-weight-bold">Distrito</label>
@@ -99,6 +100,7 @@
             </div>
         </div>
     </div>
+    <br />
     <div class="form-row">
         <div class="form-group col-md-3">
             <label class="font-weight-bold">Seleccione tipo de vivienda</label>
@@ -134,6 +136,7 @@
                 <asp:TextBox ID="numberHouseOrAp" runat="server" type="text" class="form-control input-id" required="true"> </asp:TextBox>
         </div>
     </div>
+    <br />
     <div class="form-row">
         <div class="form-group col-md-2">
             <label class="font-weight-bold">¿Tiene sintomas?</label>
@@ -151,7 +154,7 @@
             <div class="form-group col-md-3">
                 <label class="font-weight-bold">Sintomas</label>
                 <div class="form-check form-check-inline">
-                    <asp:ListBox ID="symptoms" runat="server" SelectionMode="Multiple" CssClass="form-control"></asp:ListBox>
+                    <asp:ListBox ID="symptoms" runat="server" SelectionMode="Multiple" CssClass="form-control" Width="250px"></asp:ListBox>
                     <asp:RequiredFieldValidator ID="symptomsRequired" runat="server" ControlToValidate="symptoms"
                         ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
                 </div>
@@ -173,13 +176,14 @@
             <div class="form-group col-md-3">
                 <label class="font-weight-bold">Seleccione Paises</label>
                 <div class="form-check form-check-inline">
-                    <asp:ListBox ID="chooseTravelCountry" runat="server" SelectionMode="Multiple" CssClass="form-control"></asp:ListBox>
+                    <asp:ListBox ID="chooseTravelCountry" runat="server" SelectionMode="Multiple" CssClass="form-control" Width="250px"></asp:ListBox>
                     <asp:RequiredFieldValidator ID="chooseTravelCountryRequired" runat="server" ControlToValidate="chooseTravelCountry"
                         ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
                 </div>
             </div>
         </asp:Panel>
     </div>
+    <br />
     <div class="form-row">
         <div class="form-group col-md-6">
             <label class="font-weight-bold">¿Mantuvo contacto con una persona con problemas respiratorios?</label>
