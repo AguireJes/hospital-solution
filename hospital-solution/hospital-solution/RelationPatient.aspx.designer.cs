@@ -24,40 +24,40 @@ namespace hospital_solution
         protected global::System.Web.UI.WebControls.TextBox inputName;
 
         /// <summary>
-        /// Control sexType.
+        /// Control sexTypeContact.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList sexType;
+        protected global::System.Web.UI.WebControls.DropDownList sexTypeContact;
 
         /// <summary>
-        /// Control sexTypeRequired.
+        /// Control sexTypeContactRequired.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator sexTypeRequired;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator sexTypeContactRequired;
 
         /// <summary>
-        /// Control bloodType.
+        /// Control bloodTypeContact.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList bloodType;
+        protected global::System.Web.UI.WebControls.DropDownList bloodTypeContact;
 
         /// <summary>
-        /// Control bloodTypeRequired.
+        /// Control bloodTypeContactRequired.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator bloodTypeRequired;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator bloodTypeContactRequired;
 
         /// <summary>
         /// Control inputPhone.
@@ -78,22 +78,22 @@ namespace hospital_solution
         protected global::System.Web.UI.WebControls.TextBox inputEmail;
 
         /// <summary>
-        /// Control countryChoice.
+        /// Control countryChoiceContact.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList countryChoice;
+        protected global::System.Web.UI.WebControls.DropDownList countryChoiceContact;
 
         /// <summary>
-        /// Control countryChoiceRequired.
+        /// Control countryChoiceContactRequired.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator countryChoiceRequired;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator countryChoiceContactRequired;
 
         /// <summary>
         /// Control saveContact.

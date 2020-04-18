@@ -87,7 +87,7 @@
                 <div class="form-group col-md-4">
                     <label class="font-weight-bold">Corregimiento</label>
                     <div class="form-check form-check-inline">
-                        <asp:DropDownList ID="townshipChoice" runat="server" CssClass="form-control document">
+                        <asp:DropDownList ID="townshipChoice" runat="server" CssClass="form-control document" Width="200px">
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="townshipChoiceRequired" runat="server" ControlToValidate="townshipChoice"
                             ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>

@@ -195,11 +195,6 @@ namespace hospital_solution.Interfaces.Command.Service
             }
         }
 
-        private static void showMessage(string v, string message)
-        {
-            throw new NotImplementedException(message);
-        }
-
         public void LoadTownshipChart()
         {
             try
@@ -223,9 +218,36 @@ namespace hospital_solution.Interfaces.Command.Service
             }
         }
 
-        public void LaveTravelCountries(int idPatient, string idCountry)
+        public void SaveContacts(ContactDTO contact, string idHouse)
         {
-            throw new NotImplementedException();
+            try
+            {
+
+                MySqlConnection connectionBd = connection.getConnection();
+
+                string query = "INSERT INTO hospital.contactos(nombre,idpaisnac,tiposangre,sexo,telefono,email,contact_idhogar) VALUES (@name,@country,@bloodType,@sex,@telephone,@email,@idHouse)";
+
+                MySqlCommand cmd;
+                cmd = new MySqlCommand(query, connectionBd);
+                cmd.Parameters.AddWithValue("@name", contact.name);
+                cmd.Parameters.AddWithValue("@country", contact.country);
+                cmd.Parameters.AddWithValue("@bloodType", contact.bloodType);
+                cmd.Parameters.AddWithValue("@sex", contact.sex);
+                cmd.Parameters.AddWithValue("@telephone", contact.telephone);
+                cmd.Parameters.AddWithValue("@email", contact.email);
+                cmd.Parameters.AddWithValue("@idHouse", idHouse);
+                cmd.ExecuteNonQuery();
+                connectionBd.Close();
+            }
+            catch (Exception exc)
+            {
+                showMessage("Error Message", exc.Message);
+            }
+        }
+
+        private static void showMessage(string v, string message)
+        {
+            throw new NotImplementedException(message);
         }
     }
 }

@@ -200,7 +200,8 @@ namespace hospital_solution
 
             if (redirectToContact)
             {
-                HttpContext.Current.Session["idPatient"] = patient.id;
+                HttpContext.Current.Session["idHouse"] = patient.idHouse;
+                HttpContext.Current.Session["personQuantity"] = patient.personQuantity;
                 Response.Redirect("~/RelationPatient.aspx");
             } else
             {

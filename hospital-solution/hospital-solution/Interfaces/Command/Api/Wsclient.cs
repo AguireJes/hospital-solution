@@ -22,8 +22,10 @@ namespace hospital_solution.Interfaces.Command.Api
 
         void SaveSymptoms(int idPatient, string idSymptom);
 
-        void LaveTravelCountries(int idPatient, string idCountry);
+        void SaveTravelCountries(int idPatient, string idCountry);
 
         void LoadTownshipChart();
+
+        void SaveContacts(ContactDTO contact, string idHouse);
     }
 }
