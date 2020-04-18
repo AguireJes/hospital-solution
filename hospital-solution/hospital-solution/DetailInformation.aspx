@@ -47,7 +47,7 @@
                 <label class="font-weight-bold">Telefono</label>
                 <asp:TextBox ID="inputPhone" runat="server" type="text" class="form-control" placeholder="255-2338" required="true"> </asp:TextBox>
             </div>
-            <div class="form-group col-md-2">
+            <div class="form-group col-md-3">
                 <label class="font-weight-bold">Tipo de sangre</label>
                 <div class="form-check form-check-inline">
                     <asp:DropDownList ID="bloodType" runat="server" CssClass="form-control document">
@@ -72,122 +72,123 @@
                 </div>
             </div>
         </div>
-    </div>
-    <br />
-    <div class="form-row">
-        <div class="form-group col-md-4">
-            <label class="font-weight-bold">Distrito</label>
-            <div class="form-check form-check-inline">
-                <asp:DropDownList ID="districtChoice" runat="server" CssClass="form-control" OnSelectedIndexChanged="districtChoice_SelectedIndexChanged" AutoPostBack="true">
-                </asp:DropDownList>
-                <asp:RequiredFieldValidator ID="districtChoiceRequired" runat="server" ControlToValidate="districtChoice"
-                    ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
-            </div>
-        </div>
-        <asp:Panel ID="fieldTownShip" runat="server" Visible="false">
+        <br />
+        <div class="form-row">
             <div class="form-group col-md-4">
-                <label class="font-weight-bold">Corregimiento</label>
+                <label class="font-weight-bold">Distrito</label>
                 <div class="form-check form-check-inline">
-                    <asp:DropDownList ID="townshipChoice" runat="server" CssClass="form-control document">
+                    <asp:DropDownList ID="districtChoice" runat="server" CssClass="form-control" OnSelectedIndexChanged="districtChoice_SelectedIndexChanged" AutoPostBack="true">
                     </asp:DropDownList>
-                    <asp:RequiredFieldValidator ID="townshipChoiceRequired" runat="server" ControlToValidate="townshipChoice"
+                    <asp:RequiredFieldValidator ID="districtChoiceRequired" runat="server" ControlToValidate="districtChoice"
                         ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
                 </div>
             </div>
-        </asp:Panel>
-    </div>
-    <br />
-    <div class="form-row">
-        <div class="form-group col-md-3">
-            <label class="font-weight-bold">Seleccione tipo de vivienda</label>
-            <div class="form-check form-check-inline">
-                <asp:DropDownList ID="houseType" runat="server" CssClass="form-control">
-                </asp:DropDownList>
-                <asp:RequiredFieldValidator ID="houseTypeRequired" runat="server" ControlToValidate="houseType"
-                    ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
-            </div>
+            <asp:Panel ID="fieldTownShip" runat="server" Visible="false">
+                <div class="form-group col-md-4">
+                    <label class="font-weight-bold">Corregimiento</label>
+                    <div class="form-check form-check-inline">
+                        <asp:DropDownList ID="townshipChoice" runat="server" CssClass="form-control document" Width="200px">
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="townshipChoiceRequired" runat="server" ControlToValidate="townshipChoice"
+                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
+                    </div>
+                </div>
+            </asp:Panel>
         </div>
-        <div class="form-group col-md-3">
-            <label class="font-weight-bold">Residencia</label>
-            <asp:TextBox ID="houseInput" runat="server" type="text" class="form-control input-id" required="true"> </asp:TextBox>
-        </div>
-        <div class="form-group col-md-3">
-            <label class="font-weight-bold">Número de casa o apartamento</label>
-            <asp:TextBox ID="numberHouseOrAp" runat="server" type="text" class="form-control input-id" required="true"> </asp:TextBox>
-        </div>
-    </div>
-    <br />
-    <div class="form-row">
-        <div class="form-group col-md-2">
-            <label class="font-weight-bold">¿Tiene sintomas?</label>
-            <div class="form-check form-check-inline">
-                <asp:DropDownList ID="haveSymptops" runat="server" CssClass="form-control document" OnSelectedIndexChanged="haveSymptops_SelectedIndexChanged" AutoPostBack="true">
-                    <asp:ListItem Text="Seleccionar" Value="Seleccionar" />
-                    <asp:ListItem Text="Si" Value="S" />
-                    <asp:ListItem Text="No" Value="N" />
-                </asp:DropDownList>
-                <asp:RequiredFieldValidator ID="haveSymptopsRequired" runat="server" ControlToValidate="haveSymptops"
-                    ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
-            </div>
-        </div>
-        <asp:Panel ID="fieldHaveSymptom" runat="server" Visible="false" CssClass="form-group col-md-3">
+        <br />
+        <div class="form-row">
             <div class="form-group col-md-3">
-                <label class="font-weight-bold">Sintomas</label>
+                <label class="font-weight-bold">Seleccione tipo de vivienda</label>
                 <div class="form-check form-check-inline">
-                    <asp:ListBox ID="symptoms" runat="server" SelectionMode="Multiple" CssClass="form-control" Width="250px"></asp:ListBox>
-                    <asp:RequiredFieldValidator ID="symptomsRequired" runat="server" ControlToValidate="symptoms"
+                    <asp:DropDownList ID="houseType" runat="server" CssClass="form-control">
+                    </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="houseTypeRequired" runat="server" ControlToValidate="houseType"
                         ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
                 </div>
             </div>
-        </asp:Panel>
-        <div class="form-group col-md-3">
-            <label class="font-weight-bold">¿Viajo recientemente a un país?</label>
-            <div class="form-check form-check-inline">
-                <asp:DropDownList ID="travelCountry" runat="server" CssClass="form-control" OnSelectedIndexChanged="travelCountry_SelectedIndexChanged" AutoPostBack="true">
-                    <asp:ListItem Text="Seleccionar" Value="Seleccionar" />
-                    <asp:ListItem Text="Si" Value="S" />
-                    <asp:ListItem Text="No" Value="N" />
-                </asp:DropDownList>
-                <asp:RequiredFieldValidator ID="travelCountryRequired" runat="server" ControlToValidate="travelCountry"
-                    ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
-            </div>
-        </div>
-        <asp:Panel ID="fieldTravelCountry" runat="server" Visible="false" CssClass="form-group col-md-3">
             <div class="form-group col-md-3">
-                <label class="font-weight-bold">Seleccione Paises</label>
+                <label class="font-weight-bold">Residencia</label>
+                <asp:TextBox ID="houseInput" runat="server" type="text" class="form-control input-id" required="true"> </asp:TextBox>
+            </div>
+            <div class="form-group col-md-3">
+                <label class="font-weight-bold">Número de casa o apartamento</label>
+                <asp:TextBox ID="numberHouseOrAp" runat="server" type="text" class="form-control input-id" required="true"> </asp:TextBox>
+            </div>
+        </div>
+        <br />
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label class="font-weight-bold">¿Tiene sintomas?</label>
                 <div class="form-check form-check-inline">
-                    <asp:ListBox ID="chooseTravelCountry" runat="server" SelectionMode="Multiple" CssClass="form-control" Width="250px"></asp:ListBox>
-                    <asp:RequiredFieldValidator ID="chooseTravelCountryRequired" runat="server" ControlToValidate="chooseTravelCountry"
+                    <asp:DropDownList ID="haveSymptops" runat="server" CssClass="form-control document" OnSelectedIndexChanged="haveSymptops_SelectedIndexChanged" AutoPostBack="true">
+                        <asp:ListItem Text="Seleccionar" Value="Seleccionar" />
+                        <asp:ListItem Text="Si" Value="S" />
+                        <asp:ListItem Text="No" Value="N" />
+                    </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="haveSymptopsRequired" runat="server" ControlToValidate="haveSymptops"
                         ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
                 </div>
             </div>
-        </asp:Panel>
-    </div>
-    <br />
-    <div class="form-row">
-        <div class="form-group col-md-4">
-            <label for="filePhoto">Seleccione foto</label>
-            <asp:FileUpload ID="imageFile" runat="server" Width="210px" CssClass="form-control" />
+            <asp:Panel ID="fieldHaveSymptom" runat="server" Visible="false" CssClass="form-group col-md-3">
+                <div class="form-group col-md-3">
+                    <label class="font-weight-bold">Sintomas</label>
+                    <div class="form-check form-check-inline">
+                        <asp:ListBox ID="symptoms" runat="server" SelectionMode="Multiple" CssClass="form-control" Width="250px"></asp:ListBox>
+                        <asp:RequiredFieldValidator ID="symptomsRequired" runat="server" ControlToValidate="symptoms"
+                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
+                    </div>
+                </div>
+            </asp:Panel>
+            <div class="form-group col-md-3">
+                <label class="font-weight-bold">¿Viajo recientemente a un país?</label>
+                <div class="form-check form-check-inline">
+                    <asp:DropDownList ID="travelCountry" runat="server" CssClass="form-control" OnSelectedIndexChanged="travelCountry_SelectedIndexChanged" AutoPostBack="true">
+                        <asp:ListItem Text="Seleccionar" Value="Seleccionar" />
+                        <asp:ListItem Text="Si" Value="S" />
+                        <asp:ListItem Text="No" Value="N" />
+                    </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="travelCountryRequired" runat="server" ControlToValidate="travelCountry"
+                        ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
+                </div>
+            </div>
+            <asp:Panel ID="fieldTravelCountry" runat="server" Visible="false" CssClass="form-group col-md-3">
+                <div class="form-group col-md-3">
+                    <label class="font-weight-bold">Seleccione Paises</label>
+                    <div class="form-check form-check-inline">
+                        <asp:ListBox ID="chooseTravelCountry" runat="server" SelectionMode="Multiple" CssClass="form-control" Width="250px"></asp:ListBox>
+                        <asp:RequiredFieldValidator ID="chooseTravelCountryRequired" runat="server" ControlToValidate="chooseTravelCountry"
+                            ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
+                    </div>
+                </div>
+            </asp:Panel>
         </div>
-        <div class="form-group col-md-4">
-            <label class="font-weight-bold">¿Mantuvo contacto con una persona con problemas respiratorios?</label>
-            <div class="form-check form-check-inline">
-                <asp:DropDownList ID="chooseContact" runat="server" CssClass="form-control">
-                    <asp:ListItem Text="Seleccionar" Value="Seleccionar" />
-                    <asp:ListItem Text="Si" Value="S" />
-                    <asp:ListItem Text="No" Value="N" />
-                </asp:DropDownList>
-                <asp:RequiredFieldValidator ID="chooseContactRequired" runat="server" ControlToValidate="chooseContact"
-                    ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
+        <br />
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label class="font-weight-bold" for="filePhoto">Seleccione foto</label>
+                <asp:FileUpload ID="imageFile" runat="server" Width="210px" CssClass="form-control" />
+            </div>
+            <div class="form-group col-md-4">
+                <label class="font-weight-bold">¿Mantuvo contacto con una persona con problemas respiratorios?</label>
+                <div class="form-check form-check-inline">
+                    <asp:DropDownList ID="chooseContact" runat="server" CssClass="form-control">
+                        <asp:ListItem Text="Seleccionar" Value="Seleccionar" />
+                        <asp:ListItem Text="Si" Value="S" />
+                        <asp:ListItem Text="No" Value="N" />
+                    </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="chooseContactRequired" runat="server" ControlToValidate="chooseContact"
+                        ErrorMessage="Seleccione una opción" InitialValue="Seleccionar" SetFocusOnError="true" ValidationGroup="savePatient"></asp:RequiredFieldValidator>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label class="font-weight-bold">Cantidad de personas con quien vive</label>
+                <asp:TextBox ID="quantityPersons" runat="server" type="text" class="form-control" Width="90px"> </asp:TextBox>
             </div>
         </div>
-        <div class="form-group col-md-4">
-            <label class="font-weight-bold">Cantidad de personas con quien vive</label>
-            <asp:TextBox ID="quantityPersons" runat="server" type="text" class="form-control" Width="90px"> </asp:TextBox>
+        <br />
+        <div class="row">
+            <asp:Button ID="savePatient" runat="server" Text="Guardar" CssClass="btn btn-lg btn-block btn btn-dark btn-save" type="submit" ValidationGroup="savePatient" OnClick="savePatient_Click" />
         </div>
-    </div>
-    <br />
-    <div class="row">
-        <asp:Button ID="savePatient" runat="server" Text="Guardar" CssClass="btn btn-lg btn-block btn btn-dark btn-save" type="submit" ValidationGroup="savePatient" OnClick="savePatient_Click" />
     </div>
 </asp:Content>
+

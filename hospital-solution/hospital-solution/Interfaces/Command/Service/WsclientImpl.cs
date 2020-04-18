@@ -3,6 +3,9 @@ using hospital_solution.Interfaces.Command.Api;
 using hospital_solution.Model;
 using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Text;
 using System.Web.UI.WebControls;
 
 namespace hospital_solution.Interfaces.Command.Service
@@ -11,7 +14,7 @@ namespace hospital_solution.Interfaces.Command.Service
     {
         ConnectionImpl connection = new ConnectionImpl();
 
-        public bool signIn(string user, string pass)
+        public bool SignIn(string user, string pass)
         {
             Boolean response = false;
             try
@@ -42,7 +45,7 @@ namespace hospital_solution.Interfaces.Command.Service
             return response;
         }
 
-        public void loadDropDownList(DropDownList dropDownList, string querySentence, string valueField, string textField)
+        public void LoadDropDownList(DropDownList dropDownList, string querySentence, string valueField, string textField)
         {
             try
             {
@@ -65,7 +68,7 @@ namespace hospital_solution.Interfaces.Command.Service
             }
         }
 
-        public void loadDropDownList(DropDownList dropDownList, string querySentence, string valueField, string textField, string district)
+        public void LoadDropDownList(DropDownList dropDownList, string querySentence, string valueField, string textField, string district)
         {
             try
             {
@@ -88,7 +91,7 @@ namespace hospital_solution.Interfaces.Command.Service
             }
         }
 
-        public void loadListBox(ListBox listBox, string querySentence, string valueField, string textField)
+        public void LoadListBox(ListBox listBox, string querySentence, string valueField, string textField)
         {
             try
             {
@@ -111,7 +114,7 @@ namespace hospital_solution.Interfaces.Command.Service
             }
         }
 
-        public void savePatient(PatientDTO patient)
+        public void SavePatient(PatientDTO patient)
         {
             try
             {
@@ -150,7 +153,7 @@ namespace hospital_solution.Interfaces.Command.Service
             }
         }
 
-        public void saveSymptoms(int idPatient, string idSymptom)
+        public void SaveSymptoms(int idPatient, string idSymptom)
         {
             try
             {
@@ -172,7 +175,7 @@ namespace hospital_solution.Interfaces.Command.Service
             }
         }
 
-        public void saveTravelCountries(int idPatient, string idCountry)
+        public void SaveTravelCountries(int idPatient, string idCountry)
         {
             try
             {
@@ -194,9 +197,85 @@ namespace hospital_solution.Interfaces.Command.Service
             }
         }
 
+        public void SaveContacts(ContactDTO contact, string idHouse)
+        {
+            try
+            {
+
+                MySqlConnection connectionBd = connection.getConnection();
+
+                string query = "INSERT INTO hospital.contactos(nombre,idpaisnac,tiposangre,sexo,telefono,email,contact_idhogar) VALUES (@name,@country,@bloodType,@sex,@telephone,@email,@idHouse)";
+
+                MySqlCommand cmd;
+                cmd = new MySqlCommand(query, connectionBd);
+                cmd.Parameters.AddWithValue("@name", contact.name);
+                cmd.Parameters.AddWithValue("@country", contact.country);
+                cmd.Parameters.AddWithValue("@bloodType", contact.bloodType);
+                cmd.Parameters.AddWithValue("@sex", contact.sex);
+                cmd.Parameters.AddWithValue("@telephone", contact.telephone);
+                cmd.Parameters.AddWithValue("@email", contact.email);
+                cmd.Parameters.AddWithValue("@idHouse", idHouse);
+                cmd.ExecuteNonQuery();
+                connectionBd.Close();
+            }
+            catch (Exception exc)
+            {
+                showMessage("Error Message", exc.Message);
+            }
+        }
+
         private static void showMessage(string v, string message)
         {
             throw new NotImplementedException(message);
+        }
+
+        public void LoadTownshipChart(Literal chartResponse)
+        {
+            try
+            {
+                MySqlConnection connectionBd = connection.getConnection();
+                DataTable tb = new DataTable();
+                string query = "select cor.descripcion,count(idpacientes) from hospital.pacientes as pac, hospital.corregimiento as cor where pac.idcorregimiento = cor.idcorregimiento group by cor.descripcion";
+
+                MySqlCommand cmd;
+                cmd = new MySqlCommand(query, connectionBd);
+                MySqlDataReader dr = cmd.ExecuteReader();
+                tb.Load(dr, LoadOption.OverwriteChanges);
+                connectionBd.Close();
+
+                if (tb != null)
+                {
+                    String chart = "";
+                    chart = "<canvas id=\"line-chart\" width=\"100%\" height=\"40\"></canvas>";
+                    chart += "<script>";
+                    chart += "new Chart(document.getElementById(\"line-chart\"), { type: 'line', data: {labels: [";
+
+                    // Labels
+                    for (int i = 0; i < 2; i++)
+                        chart += i.ToString() + ",";
+                    chart = chart.Substring(0, chart.Length - 1);
+
+                    chart += "],datasets: [{ data: [";
+
+                    // get data from database and add to chart
+                    String value = "";
+                    for (int i = 0; i < tb.Rows.Count; i++)
+                        value += tb.Rows[i]["count(idpacientes)"].ToString();
+                    value = value.Substring(0, value.Length - 1);
+                    chart += value;
+
+                    chart += "],label: \"Corregimientos\",borderColor: \"#97abb1\",fill: true}"; // Chart color
+                    chart += "]},options: { title: { display: true,text: 'Corregimientos'} }"; // Chart title
+                    chart += "});";
+                    chart += "</script>";
+
+                    chartResponse.Text = chart;
+                }
+            }
+            catch (Exception exc)
+            {
+                showMessage("Error Message", exc.Message);
+            }
         }
     }
 }
